@@ -1,0 +1,14 @@
+h1 {
+  font-family: Epilogue-Black;
+}
+
+.container {
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+.menu-container {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}

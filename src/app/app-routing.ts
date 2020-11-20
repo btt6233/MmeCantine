@@ -7,6 +7,7 @@ const APP_ROUTE: Route[] = [
   { path: '', component: MenuContainerComponent },
   { path: 'menus', component: MenuContainerComponent },
   { path: 'menu', component: MenuItemDetailsComponent },
+  { path: 'menu/:id', component: MenuItemDetailsComponent },
   { path: 'test', component: TestComponent },
 ];
 

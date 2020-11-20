@@ -2,6 +2,6 @@
   <h1>Au menu aujourd'hui !</h1>
 
   <div class="menu-container">
-    <app-menu-item></app-menu-item>
+    <app-menu-item *ngFor="let menu of menus" [menu]="menu"></app-menu-item>
   </div>
 </div>

@@ -1,3 +1,6 @@
+import { Ingredient } from './ingredient.model';
+import { Meal } from './meal.model';
+
 export interface Menu {
   id: number;
   label: string;
@@ -5,10 +8,6 @@ export interface Menu {
   imageId: number;
   price: number;
   availableForWeeks: Array<number>;
-  ingredients: {
-    id: string;
-    label: string;
-    status: number;
-    imageId: number;
-  };
+  meals: Meal;
+  ingredients: Ingredient;
 }

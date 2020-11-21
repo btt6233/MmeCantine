@@ -12,6 +12,7 @@ import { MenuItemDetailsComponent } from './menu-container/menu-item-details/men
 import { TestComponent } from './test/test.component';
 
 import { AppRounting } from './app-routing';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AppRounting } from './app-routing';
     MenuItemComponent,
     MenuItemDetailsComponent,
     TestComponent,
+    FooterComponent,
   ],
   imports: [BrowserModule, HttpClientModule, AppRounting],
   providers: [],

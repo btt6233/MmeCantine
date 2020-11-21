@@ -1,0 +1,104 @@
+
+.user-info {
+    position: absolute;
+    background-color: white;
+    margin: -8em 3em;
+    padding: 0em 1em;
+    padding-top: 0.8em;
+    width: 26rem;
+    border-radius: 1em;
+    box-shadow: 0px 0px 52px -7px rgba(0,0,0,0.25);
+    opacity: 0;
+    transition: ease-in 0.1s;
+
+}
+
+.user-info p {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2em;
+    line-height: 1.2em;
+    color: lightgrey;
+}
+
+
+/* Le footer !! */
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: fixed;
+    height:5em;
+    background-color: #45BF87;
+    width: 100%;
+    bottom: 0; left: 0; right: 0;
+}
+
+footer a, footer #log{
+    background-color: transparent;
+    color: white;
+}
+
+.f-items:hover{
+    text-decoration: underline;
+}
+
+.items-footer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/*  Compte info ! */
+
+.compte-info-card-item{
+    width: 130px;
+    height: auto;
+    padding: 1em;
+    border-radius: 1em;
+    box-shadow: 0px 0px 52px -7px rgba(0,0,0,0.25); 
+    margin: 1em;   
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.compte-info-card-item > p{
+    margin: 5px;
+    font-family: Epilogue-Bold;
+}
+
+.compte-info{
+    margin: 2em,2em,2em;     
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 30%, rgba(255,255,255,0) 80%);
+}
+
+.cagnote{
+    display: flex;
+    justify-content: space-between;
+    background-color:#45BF87;
+    color: white;
+}
+
+.fin-commandes{
+    background-color: #FF9595;
+    color: white;
+    
+}
+
+#prefixe, #compte_a_rebours {
+    font-family: Epilogue-Bold;
+
+}

@@ -10,11 +10,12 @@ const API: string = 'http://localhost:8080/lunchtime';
 export class MenuService {
   constructor(private http: HttpClient) {}
 
+  //affichage des plats et non des menus pour le moments
   getMenusAvailableToday() {
     return this.http.get(API + '/meal/findallavailablefortoday');
   }
 
-  getMealById(id:number) {
+  getMealById(id: number) {
     return this.http.get(API + '/meal/find/' + id);
   }
 }

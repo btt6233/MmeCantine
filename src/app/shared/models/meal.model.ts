@@ -4,5 +4,5 @@ export interface Meal {
   statut: number;
   imageId: number;
   priceDF: number;
-  availableForWeeks: Array<number>;
+  availableForWeeks: number[];
 }

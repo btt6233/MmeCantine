@@ -7,7 +7,7 @@ export interface Menu {
   status: number;
   imageId: number;
   price: number;
-  availableForWeeks: Array<number>;
-  meals: Meal;
-  ingredients: Ingredient;
+  availableForWeeks: number[];
+  meals: Meal[];
+  ingredients: Ingredient[];
 }

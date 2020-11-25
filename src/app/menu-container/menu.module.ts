@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { MenuContainerComponent } from './menu-container.component';
@@ -13,7 +14,7 @@ import { menuRouting } from './menu.rounting';
     MenuItemComponent,
     MenuItemDetailsComponent,
   ],
-  imports: [menuRouting],
+  imports: [CommonModule,menuRouting],
   providers: [],
   exports: [],
 })

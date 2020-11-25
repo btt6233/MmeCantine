@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Menu } from '../../shared/models/menu.model';
 import { MenuService } from '../../shared/services/menu.service';
 
@@ -8,13 +8,13 @@ import { MenuService } from '../../shared/services/menu.service';
   styleUrls: ['./menu-list.component.css'],
 })
 export class MenuListComponent implements OnInit {
-  public menus: Menu[];
+  @Output() menus: Menu[];
 
   constructor(private menuService: MenuService) {}
 
   ngOnInit(): void {
-    this.menuService.getMenusAvailableToday().subscribe((menu: Menu[]) => {
-      this.menus = menu;
+    this.menuService.menus.subscribe((menus: Menu[]) => {
+      this.menus = menus;
     });
   }
 }

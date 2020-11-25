@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Meal } from 'src/app/shared/models/meal.model';
-import { MenuService } from 'src/app/shared/services/menu.service';
+import { Menu } from 'src/app/shared/models/menu.model';
+import { MenuService } from '../../shared/services/menu.service';
 
 @Component({
   selector: 'app-menu-item-details',
@@ -9,21 +9,17 @@ import { MenuService } from 'src/app/shared/services/menu.service';
   styleUrls: ['./menu-item-details.component.css'],
 })
 export class MenuItemDetailsComponent implements OnInit {
-  meal: Meal;
+  menu: Menu;
   constructor(
-    private activatedRoute: ActivatedRoute,
-    private menuService: MenuService
+    private menuService: MenuService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.getMeal();
-  }
-
-  getMeal() {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.menuService.getMealById(params.id).subscribe((meal: Meal) => {
-        this.meal = meal;
-      });
+      this.menuService
+        .getMenu(params.id)
+        .subscribe((menu: Menu) => this.menu = menu);
     });
   }
 }

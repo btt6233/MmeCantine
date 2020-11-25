@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { filter, map } from 'rxjs/Operators';
 import { HttpClient } from '@angular/common/http';
+import { Menu } from '../models/menu.model';
 
 const API: string = 'http://localhost:8080/lunchtime';
 
@@ -8,14 +10,22 @@ const API: string = 'http://localhost:8080/lunchtime';
   providedIn: 'root',
 })
 export class MenuService {
-  constructor(private http: HttpClient) {}
+  public menus: BehaviorSubject<Menu[]> = new BehaviorSubject(null);
 
-  //affichage des plats et non des menus pour le moments
-  getMenusAvailableToday() {
-    return this.http.get(API + '/meal/findallavailablefortoday');
+  constructor(private http: HttpClient) {
+    this.initMenus();
   }
 
-  getMealById(id: number) {
-    return this.http.get(API + '/meal/find/' + id);
+  //affichage des plats et non des menus pour le moments
+  initMenus(): void {
+    this.http
+      .get<Menu[]>(API + '/meal/findallavailablefortoday')
+      .subscribe((menus: Menu[]) => {
+        this.menus.next(menus);
+      });
+  }
+
+  getMenu(id: number): Observable<Menu> {
+    return this.http.get<Menu>(API + '/meal/find/' + id);
   }
 }

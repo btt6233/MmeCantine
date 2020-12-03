@@ -14,18 +14,19 @@ export class MenuService {
 
   constructor(private http: HttpClient) {
     this.initMenus();
+    console.log(this.menus);
+    
   }
 
-  //affichage des plats et non des menus pour le moments
   initMenus(): void {
     this.http
-      .get<Menu[]>(API + '/meal/findallavailablefortoday')
+      .get<Menu[]>(API + '/menu/findallavailablefortoday')
       .subscribe((menus: Menu[]) => {
         this.menus.next(menus);
       });
   }
 
   getMenu(id: number): Observable<Menu> {
-    return this.http.get<Menu>(API + '/meal/find/' + id);
+    return this.http.get<Menu>(API + '/menu/find/' + id);
   }
 }

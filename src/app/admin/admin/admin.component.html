@@ -1,0 +1,6 @@
+<div *ngIf="token" class="">
+    <button (click)="getUsers()">Afficher la liste des utilisateurs</button>
+    <ul>
+        <li (click)="userDetail()" *ngFor="let user of users">{{ user.name }} {{ user.firstname }} Cagnotte : {{ user.wallet }} €</li>
+    </ul>
+</div>

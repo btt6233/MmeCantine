@@ -1,25 +1,23 @@
 <div *ngIf="menu">
   <div class="main-container">
     <div class="container">
-      <h1>{{ menu.label }}</h1>
+      <div class="header">
+        <h1>{{ menu.label }}</h1>
+        <span>{{ menu.priceDF }} €</span>
+      </div>
       <hr />
       <div class="presentation">
         <div class="left">
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis
-            deserunt repellendus optio, iusto aut hic distinctio laborum. Ipsa
-            similique ea explicabo, quod saepe quia ut perferendis, dolore
-            aspernatur iure iusto!
-          </p>
-          <div>
-            <button class="btn-green" routerLink="/">Commander</button>
-          </div>
+          <h4 *ngIf="menu.meals">{{ menu.meals[0].label }}</h4>
+          <ul *ngIf="menu.meals">
+            <li *ngFor="let ingredient of menu.meals[0].ingredients">
+              {{ ingredient.label }}
+            </li>
+          </ul>
+          <button class="btn-green" routerLink="/">Commander</button>
         </div>
         <div>
-          <img
-            src="https://img.freepik.com/vecteurs-libre/assiette-couverts_1284-42854.jpg?size=626&ext=jpg"
-            alt="image de test"
-          />
+          <img [src]="imgSrc" alt="imgSrc" />
         </div>
       </div>
     </div>

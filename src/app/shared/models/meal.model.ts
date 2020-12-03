@@ -1,3 +1,5 @@
+import { Ingredient } from './ingredient.model';
+
 export interface Meal {
   id: string;
   label: string;
@@ -5,4 +7,5 @@ export interface Meal {
   imageId: number;
   priceDF: number;
   availableForWeeks: number[];
+  ingredients: Ingredient[];
 }

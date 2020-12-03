@@ -9,7 +9,8 @@ import { MenuService } from '../../shared/services/menu.service';
   styleUrls: ['./menu-item-details.component.css'],
 })
 export class MenuItemDetailsComponent implements OnInit {
-  menu: Menu;
+  public menu: Menu | null = null;
+  public imgSrc: string = '../assets/images/meal/default.png';
   constructor(
     private menuService: MenuService,
     private activatedRoute: ActivatedRoute
@@ -17,9 +18,12 @@ export class MenuItemDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.menuService
-        .getMenu(params.id)
-        .subscribe((menu: Menu) => this.menu = menu);
+      this.menuService.findById(params.id).subscribe((menu: Menu) => {
+        this.menu = menu;
+        if ('../assets/images/meal/' + menu.meals[0].imageId) {
+          this.imgSrc = '../assets/images/meal/' + menu.meals[0].label + '.png';
+        }
+      });
     });
   }
 }

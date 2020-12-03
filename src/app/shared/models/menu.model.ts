@@ -1,4 +1,3 @@
-import { Ingredient } from './ingredient.model';
 import { Meal } from './meal.model';
 
 export interface Menu {
@@ -6,8 +5,7 @@ export interface Menu {
   label: string;
   status: number;
   imageId: number;
-  price: number;
+  priceDF: number;
   availableForWeeks: number[];
   meals: Meal[];
-  ingredients: Ingredient[];
 }

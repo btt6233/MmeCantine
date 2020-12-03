@@ -13,12 +13,10 @@ export class MenuService {
   public menus: BehaviorSubject<Menu[]> = new BehaviorSubject(null);
 
   constructor(private http: HttpClient) {
-    this.initMenus();
-    console.log(this.menus);
-    
+    this.findAll();
   }
 
-  initMenus(): void {
+  findAll(): void {
     this.http
       .get<Menu[]>(API + '/menu/findallavailablefortoday')
       .subscribe((menus: Menu[]) => {
@@ -26,7 +24,10 @@ export class MenuService {
       });
   }
 
-  getMenu(id: number): Observable<Menu> {
-    return this.http.get<Menu>(API + '/menu/find/' + id);
+  findById(id: number): Observable<Menu> {
+    return this.menus.pipe(
+      filter((menus: Menu[]) => menus !== null),
+      map((menus: Menu[]) => menus.find( menus => menus.id == id))
+    );
   }
 }

@@ -1,21 +1,32 @@
 <div class="container">
-    <nav class="nav">
-      <img
-        class="logo"
-        src="../../assets/images/madame-cantine.svg"
-        alt="Logo Madame Cantine"
-      />
-      <ul class="menu-list">
-          <li>
+  <nav class="nav">
+    <img
+      class="logo"
+      src="../../assets/images/madame-cantine.svg"
+      alt="Logo Madame Cantine"
+      routerLink="/menus"
+    />
+    <ul class="menu-list">
+      <li *ngIf="!isCantiniere">
               <button class="btn-simple" routerLink="/menus">Menus</button>
           </li>
-          <li>
-              <button class="btn-green" routerLink="/test">Inscription</button>
-          </li>
-          <li>
-              <button class="btn-pink" routerLink="/test">Connexion</button>
-          </li>
-      </ul>
-    </nav>
-  </div>
-  
+      <li class="dropdown" *ngIf="isCantiniere">
+        <button class="btn-simple" (click)="menuShow =! menuShow">Menus</button>
+        <div class="dropdown-content" [ngStyle]="{'display' : menuShow ?  'block' : 'none'}">
+          <ul>
+            <li><a class="link-down"  (click)="menuShow =! menuShow" [routerLink]="['/menus']">Consulter</a></li>
+            <li><a class="link-down"  (click)="menuShow =! menuShow" [routerLink]="['/menu/edit']">Ajouter</a></li>
+            <li><a class="link-down"  (click)="menuShow =! menuShow">Modifier</a></li>
+            <li><a class="link-down"  (click)="menuShow =! menuShow">Supprimer</a></li>
+        </ul>
+        </div>
+      </li>
+      <li>
+        <button class="btn-green" routerLink="/test">Inscription</button>
+      </li>
+      <li>
+        <button class="btn-pink" routerLink="/test">Connexion</button>
+      </li>
+    </ul>
+  </nav>
+</div>

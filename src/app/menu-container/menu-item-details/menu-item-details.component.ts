@@ -18,7 +18,7 @@ export class MenuItemDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params: Params) => {
-      this.menuService.findById(params.id).subscribe((menu: Menu) => {
+      this.menuService.findMenuById(params.id).subscribe((menu: Menu) => {
         this.menu = menu;
         if ('../assets/images/meal/' + menu.meals[0].imageId) {
           this.imgSrc = '../assets/images/meal/' + menu.meals[0].label + '.png';

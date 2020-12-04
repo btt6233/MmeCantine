@@ -2,10 +2,11 @@ import { Meal } from './meal.model';
 
 export interface Menu {
   id: number;
-  label: string;
   status: number;
-  imageId: number;
+  label: string;
+  description?: string;
   priceDF: number;
   availableForWeeks: number[];
+  imageId: number;
   meals: Meal[];
 }

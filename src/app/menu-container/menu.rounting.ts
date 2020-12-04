@@ -1,10 +1,12 @@
 import { Route, RouterModule } from '@angular/router';
 import { MenuContainerComponent } from './menu-container.component';
+import { MenuEditComponent } from './menu-edit/menu-edit.component';
 import { MenuItemDetailsComponent } from './menu-item-details/menu-item-details.component';
 
 const MENU_ROUTES: Route[] = [
   { path: '', component: MenuContainerComponent },
   { path: 'menus', component: MenuContainerComponent },
+  { path: 'menu/edit', component: MenuEditComponent },
   { path: 'menu/:id', component: MenuItemDetailsComponent },
 ];
 

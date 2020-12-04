@@ -6,6 +6,7 @@ import { MenuItemDetailsComponent } from './menu-item-details/menu-item-details.
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { MenuListComponent } from './menu-list/menu-list.component';
 import { menuRouting } from './menu.rounting';
+import { MenuEditComponent } from './menu-edit/menu-edit.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { menuRouting } from './menu.rounting';
     MenuListComponent,
     MenuItemComponent,
     MenuItemDetailsComponent,
+    MenuEditComponent,
   ],
   imports: [CommonModule,menuRouting],
   providers: [],

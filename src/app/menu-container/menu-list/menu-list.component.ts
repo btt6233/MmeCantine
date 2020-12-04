@@ -13,7 +13,7 @@ export class MenuListComponent implements OnInit {
   constructor(private menuService: MenuService) {}
 
   ngOnInit(): void {
-    this.menuService.menus.subscribe((menus: Menu[]) => {
+    this.menuService.findAllAvailableForToday().subscribe((menus: Menu[]) => {
       this.menus = menus;
     });
   }

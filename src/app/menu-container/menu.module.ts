@@ -7,6 +7,7 @@ import { MenuItemComponent } from './menu-item/menu-item.component';
 import { MenuListComponent } from './menu-list/menu-list.component';
 import { menuRouting } from './menu.rounting';
 import { MenuEditComponent } from './menu-edit/menu-edit.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { MenuEditComponent } from './menu-edit/menu-edit.component';
     MenuItemDetailsComponent,
     MenuEditComponent,
   ],
-  imports: [CommonModule,menuRouting],
+  imports: [CommonModule, menuRouting, FormsModule, ReactiveFormsModule],
   providers: [],
   exports: [],
 })

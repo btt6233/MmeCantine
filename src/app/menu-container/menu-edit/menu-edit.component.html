@@ -3,28 +3,28 @@
 </div>
 
 <div class="form-container">
-  <form>
+  <form [formGroup]="menuForm" (ngSubmit)="createMenu()">
     <div class="row">
       <div class="col">
         <label>Nom :</label>
-        <input type="text" placeholder="Menu Festif" />
+        <input type="text" placeholder="Menu Festif" formControlName="nom" />
       </div>
       <div class="col">
         <label>Prix :</label>
-        <input type="number" placeholder="12 euro" />
+        <input type="number" placeholder="12 euro" formControlName="prix" />
       </div>
     </div>
 
     <div class="row">
       <div class="col">
         <label>Disponibilité :</label>
-        <input type="text" />
+        <input type="text" formControlName="dispo"/>
       </div>
       <div class="col">
         <label>Plats :</label>
         <select>
           <option>Choisir plats</option>
-          <option *ngFor="let meal of meals">{{meal.label}}</option>
+          <option *ngFor="let meal of meals" [ngValue]="meals.label">{{meal.label}}</option>
         </select>
       </div>
     </div>
@@ -32,7 +32,7 @@
     <div class="row">
       <div class="col">
         <label>Description</label>
-        <textarea name="" id="" cols="30" rows="10"></textarea>
+        <textarea cols="30" rows="10" formControlName="desc"></textarea>
       </div>
     </div>
 

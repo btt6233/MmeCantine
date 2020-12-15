@@ -47,13 +47,13 @@ export class AuthService {
     email: string;
     password: string;
   }): Observable<string> {
-    return this.http.post<string>(API + '/login', credentials).pipe(
-      tap((token: string) => {
+    return this.http.post<string>(API + '/login', credentials, {observe: "response"}).pipe(
+      tap((res: any) => {
         this.jwtToken.next({
           isAuthenticated: true,
-          token: token,
+          token: res.headers.get("Authorization"),
         });
-        localStorage.setItem('jwt', token);
+        localStorage.setItem('jwt', res.headers.get("Authorization"));
       })
     );
   }

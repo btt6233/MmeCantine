@@ -17,8 +17,6 @@ export class AuthService {
   });
   constructor(private http: HttpClient) {
     this.initToken();
-    console.log(this.jwtToken);
-    
   }
 
   private initToken(): void {
@@ -34,6 +32,7 @@ export class AuthService {
         token: null,
       });
     }
+    console.log(this.jwtToken.value);
   }
 
   public signup(user: User): Observable<User> {
@@ -47,14 +46,24 @@ export class AuthService {
     email: string;
     password: string;
   }): Observable<string> {
-    return this.http.post<string>(API + '/login', credentials, {observe: "response"}).pipe(
-      tap((res: any) => {
-        this.jwtToken.next({
-          isAuthenticated: true,
-          token: res.headers.get("Authorization"),
-        });
-        localStorage.setItem('jwt', res.headers.get("Authorization"));
-      })
-    );
+    return this.http
+      .post<string>(API + '/login', credentials, { observe: 'response' })
+      .pipe(
+        tap((res: any) => {
+          this.jwtToken.next({
+            isAuthenticated: true,
+            token: res.headers.get('Authorization'),
+          });
+          localStorage.setItem('jwt', res.headers.get('Authorization'));
+        })
+      );
+  }
+
+  public logout(): void {
+    this.jwtToken.next({
+      isAuthenticated: false,
+      token: null,
+    });
+    localStorage.removeItem('jwt');
   }
 }

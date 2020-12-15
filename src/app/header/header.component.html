@@ -8,25 +8,53 @@
     />
     <ul class="menu-list">
       <li *ngIf="!isCantiniere">
-              <button class="btn-simple" routerLink="/menus">Menus</button>
-          </li>
+        <button class="btn-simple" routerLink="/menus">Menus</button>
+      </li>
       <li class="dropdown" *ngIf="isCantiniere">
-        <button class="btn-simple" (click)="menuShow =! menuShow">Menus</button>
-        <div class="dropdown-content" [ngStyle]="{'display' : menuShow ?  'block' : 'none'}">
+        <button class="btn-simple" (click)="menuShow = !menuShow">Menus</button>
+        <div
+          class="dropdown-content"
+          [ngStyle]="{ display: menuShow ? 'block' : 'none' }"
+        >
           <ul>
-            <li><a class="link-down"  (click)="menuShow =! menuShow" [routerLink]="['/menus']">Consulter</a></li>
-            <li><a class="link-down"  (click)="menuShow =! menuShow" [routerLink]="['/menu/edit']">Ajouter</a></li>
-            <li><a class="link-down"  (click)="menuShow =! menuShow">Modifier</a></li>
-            <li><a class="link-down"  (click)="menuShow =! menuShow">Supprimer</a></li>
-        </ul>
+            <li>
+              <a
+                class="link-down"
+                (click)="menuShow = !menuShow"
+                [routerLink]="['/menus']"
+                >Consulter</a
+              >
+            </li>
+            <li>
+              <a
+                class="link-down"
+                (click)="menuShow = !menuShow"
+                [routerLink]="['/menu/edit']"
+                >Ajouter</a
+              >
+            </li>
+            <li>
+              <a class="link-down" (click)="menuShow = !menuShow">Modifier</a>
+            </li>
+            <li>
+              <a class="link-down" (click)="menuShow = !menuShow">Supprimer</a>
+            </li>
+          </ul>
         </div>
       </li>
-      <li>
-        <button class="btn-green" routerLink="/signup">Inscription</button>
-      </li>
-      <li>
-        <button class="btn-pink" routerLink="/signin">Connexion</button>
-      </li>
+      <span *ngIf="!jwtToken.isAuthenticated">
+        <li>
+          <button class="btn-green" routerLink="/signup">Inscription</button>
+        </li>
+        <li>
+          <button class="btn-pink" routerLink="/signin">Connexion</button>
+        </li>
+      </span>
+      <span *ngIf="jwtToken.isAuthenticated">
+        <li>
+          <button class="btn-green" (click)="logout()">Deconnexion</button>
+        </li>
+      </span>
     </ul>
   </nav>
 </div>

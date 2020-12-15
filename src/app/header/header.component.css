@@ -88,3 +88,7 @@ li {
 ul {
   padding: 0;
 }
+
+span{
+  display: flex;
+}

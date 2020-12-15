@@ -50,6 +50,7 @@ export class AuthService {
       .post<string>(API + '/login', credentials, { observe: 'response' })
       .pipe(
         tap((res: any) => {
+          console.log(res);
           this.jwtToken.next({
             isAuthenticated: true,
             token: res.headers.get('Authorization'),

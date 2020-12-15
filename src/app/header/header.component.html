@@ -4,7 +4,7 @@
       class="logo"
       src="../../assets/images/madame-cantine.svg"
       alt="Logo Madame Cantine"
-      routerLink="/menus"
+      routerLink="/"
     />
     <ul class="menu-list">
       <li *ngIf="!isCantiniere">
@@ -52,7 +52,10 @@
       </span>
       <span *ngIf="jwtToken.isAuthenticated">
         <li>
-          <button class="btn-green" (click)="logout()">Deconnexion</button>
+          <button class="btn-green" routerLink="profile">Mon compte</button>
+        </li>
+        <li>
+          <button class="btn-pink" (click)="logout()">Deconnexion</button>
         </li>
       </span>
     </ul>

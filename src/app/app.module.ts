@@ -1,17 +1,24 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { MenuModule } from './menu-container/menu.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { TestComponent } from './test/test.component';
-
-import { AppRounting } from './app-routing';
-import { MenuModule } from './menu-container/menu.module';
 import { SignupComponent } from './auth/signup/signup.component';
 import { SigninComponent } from './auth/signin/signin.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProfileComponent } from './profile/profile.component';
+
+import { AppRounting } from './app-routing';
+
 import { AuthService } from './shared/services/auth.service';
+import { UserService } from './shared/services/user.service';
+
+import { AuthGuard } from './shared/guards/auth.guard';
+
+import { AuthInterceptor } from './shared/interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -20,6 +27,7 @@ import { AuthService } from './shared/services/auth.service';
     TestComponent,
     SignupComponent,
     SigninComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +37,12 @@ import { AuthService } from './shared/services/auth.service';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [AuthService],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    AuthService,
+    AuthGuard,
+    UserService,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

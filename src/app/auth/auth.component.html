@@ -1,0 +1,21 @@
+<div id="modal"></div>
+<div id="modal-form">
+    <div id="form-card">
+        <h3>Se connecter</h3>
+        <div *ngIf="!checkStatus()" class="input-group">
+            <input
+                [(ngModel)]="authService.credentials.email"
+                type="text" placeholder="Email">
+            <input
+                [(ngModel)]="authService.credentials.password"
+                type="password" placeholder="Mot de passe">
+        </div>
+    
+        <button *ngIf="checkStatus()"
+            (click)="logout()"
+            >Déconnexion</button>
+        <button *ngIf="!checkStatus()"
+            (click)="login()"
+            >Connexion</button>
+    </div>
+</div>

@@ -2,18 +2,15 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-import { HeaderComponent } from './header/header.component';
+import { AuthComponent } from './auth/auth.component';
 
 
 
 const routes: Routes = [
-  { path: '', component: HeaderComponent, },
-  // { path: 'shared', children: [] }, 
+  { path: 'connexion', component: AuthComponent},
 
  ];
-
-
-
+ 
 @NgModule({
   declarations: [],
   imports: [

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+// import { HttpClient} from '@angular/common/http';
+// import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +12,17 @@ export class HeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.isConnected();
+  }
+
+  isConnected() {
+    if(localStorage.getItem("Authorization")){
+      return true;
+      console.log(true);
+    } else {
+      console.log(false);
+      return false;
+    }
   }
 
 }

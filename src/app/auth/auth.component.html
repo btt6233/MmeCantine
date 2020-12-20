@@ -1,6 +1,6 @@
-<div id="modal"></div>
-<div id="modal-form">
-    <div id="form-card">
+<div *ngIf="!checkStatus()" id="modal"></div>
+<div *ngIf="!checkStatus()" id="modal-form">
+    <div *ngIf="!checkStatus()" id="form-card">
         <h3>Se connecter</h3>
         <div *ngIf="!checkStatus()" class="input-group">
             <input
@@ -11,9 +11,9 @@
                 type="password" placeholder="Mot de passe">
         </div>
     
-        <button *ngIf="checkStatus()"
+        <!-- <button *ngIf="checkStatus()"
             (click)="logout()"
-            >Déconnexion</button>
+            >Déconnexion</button> -->
         <button *ngIf="!checkStatus()"
             (click)="login()"
             >Connexion</button>

@@ -25,12 +25,12 @@ export class AuthComponent implements OnInit {
 
   login() {
     this.authService.auth();
-    // console.log(this.logs);
+    // console.log(this.token);
   };
 
-  logout(): void {
-    this.authService.signout();
-  };
+  // logout(): void {
+  //   this.authService.signout();
+  // };
 
   checkStatus() {
     if (localStorage.getItem("Authorization")){

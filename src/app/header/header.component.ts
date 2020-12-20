@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import { HttpClient} from '@angular/common/http';
-// import { AuthService } from '../services/auth.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor( private authService: AuthService ) { }
 
   ngOnInit(): void {
     this.isConnected();
@@ -24,5 +24,9 @@ export class HeaderComponent implements OnInit {
       return false;
     }
   }
+
+  logout(): void {
+    this.authService.signout();
+  };
 
 }

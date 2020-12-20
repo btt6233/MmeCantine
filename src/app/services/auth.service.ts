@@ -23,7 +23,7 @@ export class AuthService {
     this.http.post(API + '/login', this.credentials, {observe: "response"})
     .subscribe((res : any) => {
       this.token = res.headers.get("Authorization");
-      // console.log(this.token);
+      console.log(this.token);
       localStorage.setItem("Authorization", this.token);
       // sessionStorage.setItem["Authorization"] = this.token;
     });

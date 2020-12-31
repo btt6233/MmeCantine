@@ -1,8 +1,39 @@
 <div class="main-container">
   <h1>Mon Compte :</h1>
   <div class="container" *ngIf="currentUser | async; let user">
-    <div>Nom : {{ user.firstname }}</div>
-    <div>Prenom : {{ user.name }}</div>
-    <div>Email : {{ user.email }}</div>
+    <div class="row">
+      <div class="item">
+        <label>Nom : </label>
+        {{ user.firstname }}
+      </div>
+      <div>
+        <label>Prenom : </label>
+        {{ user.name }}
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Email : </label>
+        {{ user.email }}
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Adresse : </label>
+        {{ user.address }}
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Code Postal : </label>
+        {{ user.postalCode }}
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Ville : </label>
+        {{ user.town }}
+      </div>
+    </div>
   </div>
 </div>

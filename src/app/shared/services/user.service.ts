@@ -3,28 +3,36 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { tap, switchMap } from 'rxjs/Operators';
 import { User } from '../models/user.model';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { AuthService } from './auth.service';
 
 const API: string = 'http://localhost:8080/lunchtime';
+const helper = new JwtHelperService();
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
   public currentUser: BehaviorSubject<User> = new BehaviorSubject(null);
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
   public getCurrentUser(): Observable<User> {
     if (this.currentUser.value) {
       return this.currentUser;
     } else {
-      return this.http.get<User>(API + '/user/find/108').pipe(
-        tap((user: User) => {
-          this.currentUser.next(user);
-        }),
-        switchMap(() => {
-          return this.currentUser;
-        })
-      );
+      const token = this.authService.jwtToken;
+      const decodedToken = helper.decodeToken(token.value.token);
+      
+      return this.http
+        .get<User>(API + '/user/find/' + decodedToken.user.id)
+        .pipe(
+          tap((user: User) => {
+            this.currentUser.next(user);
+          }),
+          switchMap(() => {
+            return this.currentUser;
+          })
+        );
     }
   }
 }

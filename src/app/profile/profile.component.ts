@@ -9,13 +9,13 @@ import { UserService } from '../shared/services/user.service';
   styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  public currentUser: Observable<User>;
+  public currentUser: User;
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.currentUser = this.userService.getCurrentUser();
-    console.log(this.currentUser);
-    
+    this.userService.getCurrentUser().subscribe((user: User) => {
+      this.currentUser = user;
+    });
   }
 }

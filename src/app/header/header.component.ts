@@ -1,7 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { JwtTokent } from '../shared/models/jwt-token.model';
+import { User } from '../shared/models/user.model';
 import { AuthService } from '../shared/services/auth.service';
+import { UserService } from '../shared/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -11,8 +13,12 @@ import { AuthService } from '../shared/services/auth.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   public jwtToken: JwtTokent;
   public subscription: Subscription;
-  isCantiniere: boolean = true;
-  constructor(private authService: AuthService) {}
+  public currentUser: User;
+  public isLunchLady: boolean;
+  constructor(
+    private authService: AuthService,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.subscription = this.authService.jwtToken.subscribe(
@@ -20,9 +26,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
         this.jwtToken = jwtToken;
       }
     );
+
+    this.userService.getCurrentUser().subscribe((user: User) => {
+      this.currentUser = user;
+      this.isLunchLady = user.isLunchLady
+    });
   }
 
-  public logout():void {
+  public logout(): void {
     this.authService.logout();
   }
 

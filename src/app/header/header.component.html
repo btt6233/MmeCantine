@@ -7,10 +7,10 @@
       routerLink="/"
     />
     <ul class="menu-list">
-      <li *ngIf="!isCantiniere">
+      <li *ngIf="!isLunchLady">
         <button class="btn-simple" routerLink="/menus">Menus</button>
       </li>
-      <li class="dropdown" *ngIf="isCantiniere">
+      <li class="dropdown" *ngIf="isLunchLady">
         <button class="btn-simple" (click)="menuShow = !menuShow">Menus</button>
         <div
           class="dropdown-content"
@@ -55,7 +55,7 @@
           <button class="btn-green" routerLink="profile">Mon compte</button>
         </li>
         <li>
-          <button class="btn-pink" (click)="logout()">Deconnexion</button>
+          <button class="btn-pink" routerLink="/" (click)="logout()">Deconnexion</button>
         </li>
       </span>
     </ul>

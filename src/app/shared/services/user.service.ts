@@ -13,26 +13,12 @@ const helper = new JwtHelperService();
   providedIn: 'root',
 })
 export class UserService {
-  public currentUser: BehaviorSubject<User> = new BehaviorSubject(null);
   constructor(private http: HttpClient, private authService: AuthService) {}
 
   public getCurrentUser(): Observable<User> {
-    if (this.currentUser.value) {
-      return this.currentUser;
-    } else {
-      const token = this.authService.jwtToken;
-      const decodedToken = helper.decodeToken(token.value.token);
-      
-      return this.http
-        .get<User>(API + '/user/find/' + decodedToken.user.id)
-        .pipe(
-          tap((user: User) => {
-            this.currentUser.next(user);
-          }),
-          switchMap(() => {
-            return this.currentUser;
-          })
-        );
-    }
+    const token = this.authService.jwtToken;
+    const decodedToken = helper.decodeToken(token.value.token);
+
+    return this.http.get<User>(API + '/user/find/' + decodedToken.user.id);
   }
 }

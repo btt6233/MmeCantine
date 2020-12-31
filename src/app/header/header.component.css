@@ -72,7 +72,7 @@ img:focus {
 }
 
 li {
-  list-style-type: none;
+  list-style-type: none;  
 }
 
 .link-down {
@@ -91,4 +91,12 @@ ul {
 
 span{
   display: flex;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  color: #45bf87;
+  font-family: Epilogue-Bold; 
 }

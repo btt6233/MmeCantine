@@ -57,6 +57,12 @@
         <li>
           <button class="btn-pink" routerLink="/" (click)="logout()">Deconnexion</button>
         </li>
+        <li>
+          <div *ngIf="currentUser" class="col">
+            <span>{{currentUser.name}}</span>
+            <span>{{currentUser.firstname}}</span>
+           </div>
+        </li>
       </span>
     </ul>
   </nav>

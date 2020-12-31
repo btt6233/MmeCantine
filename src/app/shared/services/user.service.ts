@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { tap, switchMap } from 'rxjs/Operators';
 import { User } from '../models/user.model';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { AuthService } from './auth.service';
@@ -13,12 +12,20 @@ const helper = new JwtHelperService();
   providedIn: 'root',
 })
 export class UserService {
+  public user: BehaviorSubject<User> = new BehaviorSubject(null);
+
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  public getCurrentUser(): Observable<User> {
+  public getCurrentUser():Observable<User> {
     const token = this.authService.jwtToken;
     const decodedToken = helper.decodeToken(token.value.token);
 
-    return this.http.get<User>(API + '/user/find/' + decodedToken.user.id);
+      this.http
+        .get<User>(API + '/user/find/' + decodedToken.user.id)
+        .subscribe((user: User) => {
+          this.user.next(user);
+        });
+        return this.user
+    
   }
 }

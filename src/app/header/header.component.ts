@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { JwtTokent } from '../shared/models/jwt-token.model';
 import { User } from '../shared/models/user.model';
 import { AuthService } from '../shared/services/auth.service';
@@ -13,8 +13,8 @@ import { UserService } from '../shared/services/user.service';
 export class HeaderComponent implements OnInit, OnDestroy {
   public jwtToken: JwtTokent;
   public subscription: Subscription;
-  public currentUser: User;
-  public isLunchLady: boolean;
+  public currentUser: User | null;
+  public isLunchLady: boolean = false;
   constructor(
     private authService: AuthService,
     private userService: UserService
@@ -27,10 +27,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
       }
     );
 
-    this.userService.getCurrentUser().subscribe((user: User) => {
-      this.currentUser = user;
-      this.isLunchLady = user.isLunchLady
-    });
+    if (this.jwtToken.token) {
+      this.userService.getCurrentUser().subscribe((user: User) => {
+        this.currentUser = user;
+        console.log(this.currentUser);
+      });
+    }
   }
 
   public logout(): void {

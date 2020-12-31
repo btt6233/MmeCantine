@@ -17,9 +17,9 @@ export class LunchLadyGuard implements CanActivate {
   public isLunchLady: boolean;
 
   constructor(private userService: UserService) {
-    this.userService.getCurrentUser().subscribe((user: User) => {
-      this.isLunchLady = user.isLunchLady;
-    });
+    // this.userService.getCurrentUser().subscribe((user: User) => {
+    //   this.isLunchLady = user.isLunchLady;
+    // });
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {

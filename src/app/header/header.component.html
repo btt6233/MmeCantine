@@ -1,70 +1,92 @@
 <div class="container">
-  <nav class="nav">
-    <img
-      class="logo"
-      src="../../assets/images/madame-cantine.svg"
-      alt="Logo Madame Cantine"
-      routerLink="/"
-    />
-    <ul class="menu-list">
-      <li *ngIf="!isLunchLady">
-        <button class="btn-simple" routerLink="/menus">Menus</button>
-      </li>
-      <li class="dropdown" *ngIf="isLunchLady">
-        <button class="btn-simple" (click)="menuShow = !menuShow">Menus</button>
-        <div
-          class="dropdown-content"
-          [ngStyle]="{ display: menuShow ? 'block' : 'none' }"
-        >
-          <ul>
-            <li>
-              <a
-                class="link-down"
-                (click)="menuShow = !menuShow"
-                [routerLink]="['/menus']"
-                >Consulter</a
-              >
-            </li>
-            <li>
-              <a
-                class="link-down"
-                (click)="menuShow = !menuShow"
-                [routerLink]="['/menu/edit']"
-                >Ajouter</a
-              >
-            </li>
-            <li>
-              <a class="link-down" (click)="menuShow = !menuShow">Modifier</a>
-            </li>
-            <li>
-              <a class="link-down" (click)="menuShow = !menuShow">Supprimer</a>
-            </li>
-          </ul>
-        </div>
-      </li>
-      <span *ngIf="!jwtToken.isAuthenticated">
+  <!-- Menu non connecter -->
+  <div *ngIf="!currentUser">
+    <nav class="nav">
+      <img
+        class="logo"
+        src="../../assets/images/madame-cantine.svg"
+        alt="Logo Madame Cantine"
+        routerLink="/"
+      />
+      <ul class="menu-list">
+        <li>
+          <button class="btn-simple" routerLink="/menus">Menus</button>
+        </li>
         <li>
           <button class="btn-green" routerLink="/signup">Inscription</button>
         </li>
         <li>
           <button class="btn-pink" routerLink="/signin">Connexion</button>
         </li>
-      </span>
-      <span *ngIf="jwtToken.isAuthenticated">
+      </ul>
+    </nav>
+  </div>
+  <!-- Menu connecter -->
+  <div *ngIf="currentUser">
+    <nav class="nav">
+      <img
+        class="logo"
+        src="../../assets/images/madame-cantine.svg"
+        alt="Logo Madame Cantine"
+        routerLink="/"
+      />
+      <ul class="menu-list">
+        <li *ngIf="!currentUser.isLunchLady">
+          <button class="btn-simple" routerLink="/menus">Menus</button>
+        </li>
+        <li class="dropdown" *ngIf="currentUser.isLunchLady">
+          <button class="btn-simple" (click)="menuShow = !menuShow">
+            Menus
+          </button>
+          <div
+            class="dropdown-content"
+            [ngStyle]="{ display: menuShow ? 'block' : 'none' }"
+          >
+            <ul>
+              <li>
+                <a
+                  class="link-down"
+                  (click)="menuShow = !menuShow"
+                  [routerLink]="['/menus']"
+                  >Consulter</a
+                >
+              </li>
+              <li>
+                <a
+                  class="link-down"
+                  (click)="menuShow = !menuShow"
+                  [routerLink]="['/menu/edit']"
+                  >Ajouter</a
+                >
+              </li>
+              <li>
+                <a class="link-down" (click)="menuShow = !menuShow">Modifier</a>
+              </li>
+              <li>
+                <a class="link-down" (click)="menuShow = !menuShow"
+                  >Supprimer</a
+                >
+              </li>
+            </ul>
+          </div>
+        </li>
+
         <li>
           <button class="btn-green" routerLink="profile">Mon compte</button>
         </li>
         <li>
-          <button class="btn-pink" routerLink="/" (click)="logout()">Deconnexion</button>
+          <button class="btn-pink" routerLink="/" (click)="logout()">
+            Deconnexion
+          </button>
         </li>
         <li>
-          <div *ngIf="currentUser " class="col">
-            <span>{{currentUser.name}}</span>
-            <span>{{currentUser.firstname}}</span>
-            <span>{{currentUser.isLunchLady}}</span>
-           </div>
+          <div *ngIf="currentUser" class="col">
+            <span>{{ currentUser.name }}</span>
+            <span>{{ currentUser.firstname }}</span>
+            <span>{{ currentUser.isLunchLady }}</span>
+          </div>
         </li>
-      </span>
-    </ul>
-  </nav>
+      </ul>
+    </nav>
+  </div>
 </div>

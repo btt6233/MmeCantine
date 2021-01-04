@@ -14,7 +14,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   public jwtToken: JwtTokent;
   public subscription: Subscription;
   public currentUser: User | null;
-  public isLunchLady: boolean = false;
   constructor(
     private authService: AuthService,
     private userService: UserService
@@ -30,13 +29,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (this.jwtToken.token) {
       this.userService.getCurrentUser().subscribe((user: User) => {
         this.currentUser = user;
-        console.log(this.currentUser);
       });
     }
   }
 
   public logout(): void {
     this.authService.logout();
+    this.currentUser = null;
   }
 
   ngOnDestroy() {

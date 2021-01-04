@@ -16,16 +16,20 @@ export class UserService {
 
   constructor(private http: HttpClient, private authService: AuthService) {}
 
-  public getCurrentUser():Observable<User> {
+  public getCurrentUser(): Observable<User> {
     const token = this.authService.jwtToken;
     const decodedToken = helper.decodeToken(token.value.token);
 
-      this.http
-        .get<User>(API + '/user/find/' + decodedToken.user.id)
-        .subscribe((user: User) => {
-          this.user.next(user);
-        });
-        return this.user
-    
+    this.http
+      .get<User>(API + '/user/find/' + decodedToken.user.id)
+      .subscribe((user: User) => {
+        this.user.next(user);
+      });
+    return this.user;
+  }
+
+  public logout() {
+    this.user = null;
+    this.getCurrentUser();
   }
 }

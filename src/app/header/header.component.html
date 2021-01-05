@@ -9,7 +9,8 @@
           <li><button class="btn-simple">Menus</button></li>
           <li><button *ngIf="!isConnected()" class="btn-green">Inscription</button></li>
           <li><button *ngIf="!isConnected()" class="btn-pink" routerLink="/connexion">Connexion</button></li>
-          <li><button *ngIf="isConnected()" (click)="logout()" class="btn-pink" routerLink="/connexion">Déconnexion</button></li>
+          <li><button *ngIf="isConnected()" (click)="logout()" class="btn-pink">Déconnexion</button></li>
+          <span>Youness</span>
       </ul>
     </nav>
   </div>

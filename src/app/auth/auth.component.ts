@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
+// import { UserInfos } from '../models/user'
 
 @Component({
   selector: 'app-auth',
@@ -12,12 +13,14 @@ import { Router } from '@angular/router';
 export class AuthComponent implements OnInit {
 
   token: string | null = "";
+
   
   constructor(private http: HttpClient, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     
     if(this.checkStatus) {
+      
       this.token
     }
     console.log(this.checkStatus());

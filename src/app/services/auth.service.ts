@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Credentials } from '../models/user';
 
-
 const API : string = "http://localhost:8080/lunchtime";
 
 @Injectable({
@@ -13,6 +12,7 @@ export class AuthService {
     email: "",
     password: ""
   };
+
   token: string | null = "";
 
   constructor(
@@ -34,6 +34,7 @@ export class AuthService {
     localStorage.removeItem("Authorization");
     this.token = null;
   };
+
 
 
 

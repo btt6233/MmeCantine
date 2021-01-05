@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { FormsComponent } from './forms/forms.component';
 import { AuthComponent } from './auth/auth.component';
 import { AuthService } from './services/auth.service';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { AuthService } from './services/auth.service';
     HeaderComponent,
     FormsComponent,
     AuthComponent,
+    UserComponent,
   ],
   imports: [
     BrowserModule,

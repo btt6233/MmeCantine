@@ -22,7 +22,7 @@
       </div>
       <div class="col">
         <label>Plats :</label>
-        <select>
+        <select  (change)="selectedPlats($event)"  >
           <option>Choisir plats</option>
           <option *ngFor="let meal of meals" [ngValue]="meals.label">{{meal.label}}</option>
         </select>

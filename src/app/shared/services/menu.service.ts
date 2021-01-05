@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpBackend } from '@angular/common/http';
 import { Menu } from '../models/menu.model';
 
 const API: string = 'http://localhost:8080/lunchtime';
@@ -9,14 +9,20 @@ const API: string = 'http://localhost:8080/lunchtime';
   providedIn: 'root',
 })
 export class MenuService {
-  constructor(private http: HttpClient) {
+  private http: HttpClient;
+  constructor(private authHttp: HttpClient, handler: HttpBackend) {
+    this.http = new HttpClient(handler);
   }
 
-  findAllAvailableForToday(): Observable<Menu[]> {
+  public findAllAvailableForToday(): Observable<Menu[]> {
     return this.http.get<Menu[]>(API + '/menu/findallavailablefortoday');
   }
 
-  findMenuById(id: number): Observable<Menu> {
+  public findMenuById(id: number): Observable<Menu> {
     return this.http.get<Menu>(API + '/menu/find/' + id);
+  }
+
+  public addMenu(menu: Menu): Observable<Menu> {
+    return this.authHttp.put<Menu>(API + '/menu/add/' + menu, { observe: 'response' });
   }
 }

@@ -13,21 +13,12 @@ export class AuthInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     const token = localStorage.getItem('jwt');
     if (token) {
-      if (
-        req.url !=
-        'http://localhost:8080/lunchtime/menu/findallavailablefortoday'
-      ) {
-        const authReq = req.clone({
-          headers: req.headers.set('Authorization', token),
-        });
-        return next.handle(authReq);
-      } else {
-        return next.handle(req);
-      }
+      const authReq = req.clone({
+        headers: req.headers.set('Authorization', token),
+      });
+      return next.handle(authReq);
     } else {
       return next.handle(req);
     }
   }
 }
-
-// http://localhost:8080/lunchtime/menu/findallavailablefortoday

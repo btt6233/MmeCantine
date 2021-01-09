@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 // import { HttpClient} from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { User } from '../models/user';
+
+const HELPER = new JwtHelperService();
+
 
 @Component({
   selector: 'app-header',
@@ -9,7 +15,10 @@ import { AuthService } from '../services/auth.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor( private authService: AuthService ) { }
+  public currentUser: User | null;
+  public isLunchLady: boolean;
+
+  constructor( private authService: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
     this.isConnected();
@@ -17,10 +26,12 @@ export class HeaderComponent implements OnInit {
 
   isConnected() {
     if(localStorage.getItem("Authorization")){
+      this.currentUser = this.authService.currentUser;
+      this.isLunchLady = this.authService.currentUser.isLunchLady == true
       return true;
-      console.log(true);
+
     } else {
-      console.log(false);
+      this.currentUser = null;
       return false;
     }
   }
@@ -28,5 +39,10 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     this.authService.signout();
   };
+
+  // getUser(){
+  //   let userObject = HELPER.decodeToken(localStorage.getItem("Authorization"));
+  //   return userObject;
+  // }
 
 }

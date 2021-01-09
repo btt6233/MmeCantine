@@ -8,10 +8,14 @@
       <ul class="menu-list">
           <li><button class="btn-simple">Menus</button></li>
           <li><button *ngIf="!isConnected()" class="btn-green">Inscription</button></li>
+          <li><button *ngIf="currentUser" class="btn-green">Mon compte</button></li>
           <li><button *ngIf="!isConnected()" class="btn-pink" routerLink="/connexion">Connexion</button></li>
           <li><button *ngIf="isConnected()" (click)="logout()" class="btn-pink">Déconnexion</button></li>
-          <span>Youness</span>
+          <li *ngIf="currentUser"><span>{{ currentUser.name }}</span><span>{{ currentUser.firstname }}</span></li>
       </ul>
     </nav>
+  </div>
+  <div *ngIf="currentUser && isLunchLady">
+    <p>Salut {{ currentUser.firstname }} !</p>
   </div>
   

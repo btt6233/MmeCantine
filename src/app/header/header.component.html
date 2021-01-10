@@ -11,11 +11,15 @@
           <li><button *ngIf="currentUser" class="btn-green">Mon compte</button></li>
           <li><button *ngIf="!isConnected()" class="btn-pink" routerLink="/connexion">Connexion</button></li>
           <li><button *ngIf="isConnected()" (click)="logout()" class="btn-pink">Déconnexion</button></li>
-          <li *ngIf="currentUser"><span>{{ currentUser.name }}</span><span>{{ currentUser.firstname }}</span></li>
+          <li *ngIf="isConnected()">
+            <span>{{ currentUser.user.firstname}}</span><br>
+            <span>{{ currentUser.user.name}}</span>
+          </li>
       </ul>
     </nav>
   </div>
-  <div *ngIf="currentUser && isLunchLady">
-    <p>Salut {{ currentUser.firstname }} !</p>
-  </div>
+  <!-- <div class="isLunchLady">
+    <h2>Bienvenue ma chère cantinière !</h2>
+  </div> -->
+
   

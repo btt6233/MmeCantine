@@ -4,6 +4,7 @@ import { HttpClient} from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { User } from '../models/user'
 
 const HELPER = new JwtHelperService();
 
@@ -15,6 +16,8 @@ const HELPER = new JwtHelperService();
 export class AuthComponent implements OnInit {
 
   token: string | null = "";
+  public currentUser: User | null;
+  public isLunchLady: boolean;
   
   constructor(private http: HttpClient, private authService: AuthService, private router: Router) { }
 
@@ -33,7 +36,8 @@ export class AuthComponent implements OnInit {
 
   login() {
     this.authService.auth();
-    // console.log(this.authService.currentUser);
+    localStorage.setItem("Authorization", this.token);
+    console.log(this.authService.currentUser);
     // console.log(HELPER.decodeToken(this.token));
 
     // setTimeout(function(){console.log(HELPER.decodeToken(this.token))}, 2000)

@@ -22,13 +22,16 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.isConnected();
+    
+    console.log(this.isLunchLady);
+    
   }
 
   isConnected() {
     if(localStorage.getItem("Authorization")){
-      this.currentUser = this.authService.currentUser;
-      this.isLunchLady = this.authService.currentUser.isLunchLady == true
-      return true;
+      this.currentUser = HELPER.decodeToken(localStorage.getItem("Authorization"));
+      // this.isLunchLady = this.authService.currentUser.isLunchLady == true
+      return this.currentUser;
 
     } else {
       this.currentUser = null;
@@ -40,9 +43,5 @@ export class HeaderComponent implements OnInit {
     this.authService.signout();
   };
 
-  // getUser(){
-  //   let userObject = HELPER.decodeToken(localStorage.getItem("Authorization"));
-  //   return userObject;
-  // }
-
+  
 }

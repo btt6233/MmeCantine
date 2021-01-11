@@ -22,28 +22,18 @@ export class AuthComponent implements OnInit {
   constructor(private http: HttpClient, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    // console.log('salut');
-    
-    // setTimeout(function(){console.log(this.token)}, 2000);
-    
+
     if(this.checkStatus) {
-      this.token
-      console.log();
-      
+      this.token;
     }
-    // console.log(this.checkStatus());
+    
   }
 
   login() {
     this.authService.auth();
     localStorage.setItem("Authorization", this.token);
-    console.log(this.authService.currentUser);
-    // console.log(HELPER.decodeToken(this.token));
 
-    // setTimeout(function(){console.log(HELPER.decodeToken(this.token))}, 2000)
-    
-    // console.log(this.user.firstname);
-  };
+  }
 
   // logout(): void {
   //   this.authService.signout();
@@ -57,6 +47,16 @@ export class AuthComponent implements OnInit {
     }
   }
 
+  checkRole(){
+    if(this.authService.isLunchLady){
+      return this.isLunchLady === true; 
+      } else {
+      return false
+      }
+      
+    }
+
+  }
 
 
-}
+

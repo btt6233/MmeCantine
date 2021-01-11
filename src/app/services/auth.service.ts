@@ -21,6 +21,7 @@ export class AuthService {
   };
   public currentUser: User = null;
   token: string | null = "";
+  isLunchLady: boolean;
   
 
   constructor(
@@ -56,7 +57,8 @@ export class AuthService {
       this.token = res.headers.get("Authorization");
       const decodedToken = HELPER.decodeToken(this.token);
       this.currentUser = decodedToken.user ;
-      // console.log(this.currentUser);
+      this.isLunchLady = this.currentUser.isLunchLady;
+      // console.log(this.isLunchLady);
       
       // console.log(HELPER.decodeToken(this.token).user.firstname);
       localStorage.setItem("Authorization", this.token);
@@ -64,6 +66,14 @@ export class AuthService {
     });
 
   };
+
+  checkRoles(){
+    if(this.currentUser.isLunchLady){
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   // public signin(credentials: {
   //   email: string;

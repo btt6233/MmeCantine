@@ -25,8 +25,7 @@ export class AuthComponent implements OnInit {
 
     if(this.checkStatus) {
       this.token;
-    }
-    
+    }    
   }
 
   login() {
@@ -46,15 +45,6 @@ export class AuthComponent implements OnInit {
       return false;
     }
   }
-
-  checkRole(){
-    if(this.authService.isLunchLady){
-      return this.isLunchLady === true; 
-      } else {
-      return false
-      }
-      
-    }
 
   }
 

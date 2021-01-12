@@ -27,29 +27,9 @@ export class AuthService {
   constructor(
     private http: HttpClient,
   ) {
-    // this.initToken()
+
   
   }
-
-  // private initToken(): void {
-  //   const token = localStorage.getItem('jwt');
-  //   if (token) {
-  //     this.jwtToken.next({
-  //       isAuthenticated: true,
-  //       token: token,
-  //     });
-  //     const decodedToken = HELPER.decodeToken(this.token);
-  //     console.log(decodedToken);
-      
-  //     this.currentUser = decodedToken.user ;
-  //   } else {
-  //     this.jwtToken.next({
-  //       isAuthenticated: false,
-  //       token: null,
-  //     });
-  //     this.currentUser = null ;
-  //   }
-  // }
 
   auth() {
     this.http.post(API + '/login', this.credentials, {observe: "response"})
@@ -66,31 +46,6 @@ export class AuthService {
     });
 
   };
-
-  checkRoles(){
-    if(this.currentUser.isLunchLady){
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  // public signin(credentials: {
-  //   email: string;
-  //   password: string;
-  // }): Observable<string> {
-  //   return this.http
-  //     .post<string>(API + '/login', credentials, { observe: 'response' })
-  //     .pipe(
-  //       tap((res: any) => {
-  //         this.jwtToken.next({
-  //           isAuthenticated: true,
-  //           token: res.headers.get('Authorization'),
-  //         });
-  //         localStorage.setItem('jwt', res.headers.get('Authorization'));
-  //       })
-  //     );
-  // }
 
   signout(): void {
     localStorage.removeItem("Authorization");

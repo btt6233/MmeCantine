@@ -22,15 +22,21 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.isConnected();
-    // this.authService.checkRoles();
+    if(this.currentUser){
+      this.isLunchLady === true;
+    } else {
+      this.isLunchLady === false;
+    }
+   console.log(this.isLunchLady);
+   
     
   }
 
   isConnected() {
     if(localStorage.getItem("Authorization")){
       this.currentUser = HELPER.decodeToken(localStorage.getItem("Authorization"));
-      // console.log(this.authService.currentUser.isLunchLady);
-      console.log(this.authService.isLunchLady);
+      // console.log(this.isLunchLady);
+      //console.log(this.authService.isLunchLady);
       
       // this.isLunchLady = this.authService.currentUser.isLunchLady == true
       return this.currentUser;

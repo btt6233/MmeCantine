@@ -34,10 +34,7 @@ export class AuthService {
     }
   }
 
-  public signup(user: User): Observable<User> {
-    user.sex = 0;
-    user.wallet = 0;
-    user.isLunchLady = false;
+  public signup(user: string): Observable<User> {
     return this.http.put<User>(API + '/user/register', user);
   }
 

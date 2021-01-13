@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { JwtToken } from '../models/jwtToken';
 import { User } from '../models/user';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { Credentials } from '../models/user';
@@ -26,10 +24,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-  ) {
-
-  
-  }
+  ) { }
 
   auth() {
     this.http.post(API + '/login', this.credentials, {observe: "response"})

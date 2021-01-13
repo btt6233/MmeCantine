@@ -21,22 +21,18 @@ export class HeaderComponent implements OnInit {
   constructor( private authService: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
-    this.isConnected();
-    if(this.currentUser){
-      this.isLunchLady === true;
-    } else {
-      this.isLunchLady === false;
-    }
-   console.log(this.isLunchLady);
-   
+    this.isConnected();    
+    
     
   }
 
   isConnected() {
     if(localStorage.getItem("Authorization")){
-      this.currentUser = HELPER.decodeToken(localStorage.getItem("Authorization"));
+      let decodeToken = HELPER.decodeToken(localStorage.getItem("Authorization"));
+      this.currentUser = decodeToken.user;
       // console.log(this.isLunchLady);
       //console.log(this.authService.isLunchLady);
+      console.log(this.currentUser.isLunchLady);
       
       // this.isLunchLady = this.authService.currentUser.isLunchLady == true
       return this.currentUser;
@@ -49,19 +45,5 @@ export class HeaderComponent implements OnInit {
   logout(): void {
     this.authService.signout();
   };
-
-  // checkRoles(){
-  //   if(localStorage.getItem("Authorization")){
-  //     this.currentUser = HELPER.decodeToken(localStorage.getItem("Authorization"));
-  //     this.isLunchLady = this.authService.currentUser.isLunchLady == true
-
-  //     return this.isLunchLady;
-
-  //   } else {
-  //     this.currentUser = null;
-      
-  //   }
-  // }
-
   
 }

@@ -25,7 +25,8 @@ export class AuthComponent implements OnInit {
 
     if(this.checkStatus) {
       this.token;
-    }    
+      
+    }   
   }
 
   login() {

@@ -10,16 +10,21 @@
           <li><button *ngIf="!isConnected()" class="btn-green">Inscription</button></li>
           <li><button *ngIf="isConnected()" class="btn-green">Mon compte</button></li>
           <li><button *ngIf="!isConnected()" class="btn-pink" routerLink="/connexion">Connexion</button></li>
-          <li><button *ngIf="isConnected()" (click)="logout()" class="btn-pink">Déconnexion</button></li>
+          <li><button *ngIf="isConnected()" (click)="logout()" class="btn-pink" routerLink="/">Déconnexion</button></li>
           <li *ngIf="isConnected()">
-            <span>{{ currentUser.user.firstname }}</span><br>
-            <span>{{ currentUser.user.name }}</span>
+            <span>{{ currentUser.firstname }}</span><br>
+            <span>{{ currentUser.name }}</span>
           </li>
       </ul>
     </nav>
+    <div *ngIf="isConnected()">
+      <div *ngIf="currentUser">
+        <button *ngIf="currentUser.isLunchLady" routerLink="/user-list" class="btn-green">User List</button>
+      </div>
+    </div>
+
+    
   </div>
-  <div *ngIf="">
-    <h2>Bienvenue ma chère cantinière !</h2>
-  </div>
+
 
   

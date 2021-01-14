@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { User } from '../models/user';
-import { AuthService } from '../services/auth.service';
+import { User } from '../shared/models/user';
+import { AuthService } from '../shared/services/auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
 const HELPER = new JwtHelperService();
@@ -16,7 +16,7 @@ export class AuthGuard implements CanActivate {
     this.currentUser = this.authService.currentUser;
     this.isConnected();
   }
-  
+
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if(this.currentUser){
       return this.currentUser.isLunchLady;

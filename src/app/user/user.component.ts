@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from '../models/user';
-import { AuthService } from '../services/auth.service'
+import { User } from '../shared/models/user';
+import { AuthService } from '../shared/services/auth.service'
 
 const API : string = "http://localhost:8080/lunchtime";
 

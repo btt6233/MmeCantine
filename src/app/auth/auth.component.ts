@@ -1,9 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
-import { AuthService } from '../services/auth.service';
+import { AuthService } from '../shared/services/auth.service';
 import { Router } from '@angular/router';
-import { User } from '../models/user'
+import { User } from '../shared/models/user'
 
 @Component({
   selector: 'app-auth',

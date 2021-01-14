@@ -1,0 +1,32 @@
+app/
+|- app.module.ts
+|- app-routing.module.ts
+|- app.component.ts
+|- core/
+ |- admin/
+  |- admin.module.ts 
+  |- admin.service.ts
+  |- components/
+   |- adminauth.components.css
+   |- adminauth.components.html
+   |- adminauth.components.spec.ts
+   |- adminauth.components.ts
+  |- user/
+   |- user.module.ts
+   |- user.service.ts
+    |- components/
+     |- user.component.css
+     |- user.component.html
+     |- user.component.spec.ts
+     |- user.component.ts
+|- shared/
+ |- shared.module.ts
+ |- shared.service.ts
+ |- home/
+  |- home.module.ts
+  |- components/
+   |- header/
+    |- header.component.css
+    |- header.component.html
+    |- header.component.spec.ts
+    |- header.component.ts

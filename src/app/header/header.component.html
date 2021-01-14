@@ -6,16 +6,25 @@
         alt="Logo Madame Cantine"
       />
       <ul class="menu-list">
-          <li>
-              <button class="btn-simple" routerLink="/menus">Menus</button>
-          </li>
-          <li>
-              <button class="btn-green" routerLink="/test">Inscription</button>
-          </li>
-          <li>
-              <button class="btn-pink" routerLink="/test">Connexion</button>
+          <li><button class="btn-simple">Menus</button></li>
+          <li><button *ngIf="!isConnected()" class="btn-green">Inscription</button></li>
+          <li><button *ngIf="isConnected()" class="btn-green">Mon compte</button></li>
+          <li><button *ngIf="!isConnected()" class="btn-pink" routerLink="/connexion">Connexion</button></li>
+          <li><button *ngIf="isConnected()" (click)="logout()" class="btn-pink" routerLink="/">Déconnexion</button></li>
+          <li *ngIf="isConnected()">
+            <span>{{ currentUser.firstname }}</span><br>
+            <span>{{ currentUser.name }}</span>
           </li>
       </ul>
     </nav>
+    <div *ngIf="isConnected()">
+      <div *ngIf="currentUser">
+        <button *ngIf="currentUser.isLunchLady" routerLink="/user-list" class="btn-green">User List</button>
+      </div>
+    </div>
+
+    
   </div>
+
+
   

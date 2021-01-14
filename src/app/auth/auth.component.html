@@ -1,0 +1,25 @@
+<div *ngIf="!checkStatus()" id="modal"></div>
+<div *ngIf="!checkStatus()" id="modal-form">
+    <div *ngIf="!checkStatus()" id="form-card">
+        <div class="flex-bet">
+            <h3>Se connecter</h3>
+            <span class="btn-quit"><img routerLink="/" class="close" src="../../assets/images/elements/close.svg" alt="close"></span>
+        </div>
+        <div *ngIf="!checkStatus()" class="input-group">
+            <input
+                [(ngModel)]="authService.credentials.email"
+                type="text" placeholder="johndoe@mmecantine.com">
+            <input
+                [(ngModel)]="authService.credentials.password"
+                type="password" placeholder="••••••••••">
+        </div>     
+        <!-- <button *ngIf="checkStatus()"
+            (click)="logout()"
+            >Déconnexion</button> -->
+        <button *ngIf="!checkStatus()"
+                (click)="login()"
+                routerLink="/"
+                class="btn-success"
+                >Connexion</button>
+    </div>
+</div>

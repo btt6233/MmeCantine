@@ -33,11 +33,8 @@ export class AuthService {
       const decodedToken = HELPER.decodeToken(this.token);
       this.currentUser = decodedToken.user ;
       this.isLunchLady = this.currentUser.isLunchLady;
-      // console.log(this.isLunchLady);
-      
-      // console.log(HELPER.decodeToken(this.token).user.firstname);
+
       localStorage.setItem("Authorization", this.token);
-      // sessionStorage.setItem["Authorization"] = this.token;
     });
 
   };

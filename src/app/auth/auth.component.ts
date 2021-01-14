@@ -3,10 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient} from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
 import { Router } from '@angular/router';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from '../models/user'
-
-const HELPER = new JwtHelperService();
 
 @Component({
   selector: 'app-auth',
@@ -34,10 +31,6 @@ export class AuthComponent implements OnInit {
     localStorage.setItem("Authorization", this.token);
 
   }
-
-  // logout(): void {
-  //   this.authService.signout();
-  // };
 
   checkStatus() {
     if (localStorage.getItem("Authorization")){

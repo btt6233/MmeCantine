@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { HttpClient} from '@angular/common/http';
 import { AuthService } from '../services/auth.service';
 import { UserService } from '../services/user.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -22,22 +21,16 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.isConnected();    
-    
-    
   }
 
   isConnected() {
     if(localStorage.getItem("Authorization")){
       let decodeToken = HELPER.decodeToken(localStorage.getItem("Authorization"));
       this.currentUser = decodeToken.user;
-      // console.log(this.isLunchLady);
-      //console.log(this.authService.isLunchLady);
-      console.log(this.currentUser.isLunchLady);
-      
-      // this.isLunchLady = this.authService.currentUser.isLunchLady == true
+
       return this.currentUser;
     } else {
-      // this.currentUser = null;
+
       return false;
     }
   }

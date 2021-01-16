@@ -17,15 +17,37 @@ export class UserComponent implements OnInit {
   constructor(private http: HttpClient, private auth: AuthService) { }
 
   ngOnInit(): void {
-    // console.log(this.auth.token);
+    // console.log(this.token);
+    this.getUserList()
     
   }
 
-  // getUserList(){
-  //   let options = {
-  //     headers: { "Authorization": this.token }
-  //   };
-  // }
+  getUserList(){
+    if(localStorage.getItem("Authorization")) {
+      this.token = localStorage.getItem("Authorization");
+      let options = {
+        headers : { "Authorization" : this.token } 
+      };
+      this.http.get(API + '/user/findall', options)
+      .subscribe((res : any) => {
+        this.users = res;
+        
+        
+      });
+    }
+  }
+
+  getUserById(id: number){
+    if(localStorage.getItem("Authorization")) {
+      this.token = localStorage.getItem("Authorization");
+      let options = {
+        headers : { "Authorization" : this.token } 
+      };
+      this.http.get(API + 'user/find/')
+    }
+    
+    
+  }
 
 }
 

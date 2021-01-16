@@ -27,10 +27,8 @@ export class HeaderComponent implements OnInit {
     if(localStorage.getItem("Authorization")){
       let decodeToken = HELPER.decodeToken(localStorage.getItem("Authorization"));
       this.currentUser = decodeToken.user;
-
       return this.currentUser;
     } else {
-
       return false;
     }
   }

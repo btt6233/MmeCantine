@@ -29,10 +29,8 @@ export class AuthGuard implements CanActivate {
     if(localStorage.getItem("Authorization")){
       let decodeToken = HELPER.decodeToken(localStorage.getItem("Authorization"));
       this.currentUser = decodeToken.user;
-
       return this.currentUser;
     } else {
-
       return false;
     }
   }

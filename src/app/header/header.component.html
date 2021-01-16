@@ -4,11 +4,12 @@
         class="logo"
         src="../../assets/images/madame-cantine.svg"
         alt="Logo Madame Cantine"
+        routerLink="/"
       />
       <ul class="menu-list">
-          <li><button class="btn-simple">Menus</button></li>
+          <li><button class="btn-simple" routerLink="/">Menus</button></li>
           <li><button *ngIf="!isConnected()" class="btn-green">Inscription</button></li>
-          <li><button *ngIf="isConnected()" class="btn-green">Mon compte</button></li>
+          <li><button *ngIf="isConnected()" class="btn-green" routerLink="/profile">Mon compte</button></li>
           <li><button *ngIf="!isConnected()" class="btn-pink" routerLink="/connexion">Connexion</button></li>
           <li><button *ngIf="isConnected()" (click)="logout()" class="btn-pink" routerLink="/">Déconnexion</button></li>
           <li *ngIf="isConnected()">

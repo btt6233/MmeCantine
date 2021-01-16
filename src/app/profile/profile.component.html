@@ -1,0 +1,39 @@
+<div class="main-container">
+  <h1>Mon Compte :</h1>
+  <div class="container" *ngIf="currentUser">
+    <div class="row">
+      <div class="item">
+        <label>Nom : </label>
+        {{ currentUser.firstname }}
+      </div>
+      <div>
+        <label>Prenom : </label>
+        {{ currentUser.name }}
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Email : </label>
+        {{ currentUser.email }}
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Adresse : </label>
+        {{ currentUser.address }}
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Code Postal : </label>
+        {{ currentUser.postalCode }}
+      </div>
+    </div>
+    <div class="row">
+      <div>
+        <label>Ville : </label>
+        {{ currentUser.town }}
+      </div>
+    </div>
+  </div>
+</div>

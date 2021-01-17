@@ -17,6 +17,7 @@ import { MenuContainerComponent } from './menu-container/menu-container.componen
 import { MenuDetailsComponent } from './menu-container/menu-details/menu-details.component';
 import { RepasComponent } from './repas/repas.component';
 import { CommandesComponent } from './commandes/commandes.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { CommandesComponent } from './commandes/commandes.component';
     MenuDetailsComponent,
     RepasComponent,
     CommandesComponent,
+    UserDetailComponent
   ],
   imports: [
     BrowserModule,

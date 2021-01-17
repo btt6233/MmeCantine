@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
-import { filter, map } from 'rxjs/Operators';
-import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient, HttpBackend } from '@angular/common/http';
 import { Menu } from '../models/menu.model';
 
 const API: string = 'http://localhost:8080/lunchtime';
@@ -10,22 +9,23 @@ const API: string = 'http://localhost:8080/lunchtime';
   providedIn: 'root',
 })
 export class MenuService {
-  public menus: BehaviorSubject<Menu[]> = new BehaviorSubject(null);
+  private http: HttpClient;
 
-  constructor(private http: HttpClient) {
-    this.initMenus();
+  constructor(private authHttp: HttpClient, handler: HttpBackend) {
+    this.http = new HttpClient(handler);
   }
 
-  //affichage des plats et non des menus pour le moments
-  initMenus(): void {
-    this.http
-      .get<Menu[]>(API + '/meal/findallavailablefortoday')
-      .subscribe((menus: Menu[]) => {
-        this.menus.next(menus);
-      });
+  public findAllAvailableForToday(): Observable<Menu[]> {
+    return this.http.get<Menu[]>(API + '/menu/findallavailablefortoday');
   }
 
-  getMenu(id: number): Observable<Menu> {
-    return this.http.get<Menu>(API + '/meal/find/' + id);
+  public findMenuById(id: number): Observable<Menu> {
+    return this.http.get<Menu>(API + '/menu/find/' + id);
+  }
+
+  public addMenu(menu: Menu): Observable<Menu> {
+    return this.authHttp.put<Menu>(API + '/menu/add/' + menu, {
+      observe: 'response',
+    });
   }
 }

@@ -7,13 +7,16 @@ import { UserComponent } from './user/user.component';
 import { AuthGuard } from './guards/auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { MenuContainerComponent } from './menu-container/menu-container.component';
+import { MenuDetailsComponent } from './menu-container/menu-details/menu-details.component';
 
 const routes: Routes = [
   { path: '', component: MenuContainerComponent },
   { path: 'connexion', component: AuthComponent },
   { path: 'user-list', canActivate: [AuthGuard], component: UserComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: 'menu/:id', component: MenuDetailsComponent },
   { path: '**', component: MenuContainerComponent },
+
 ];
 
 @NgModule({
@@ -21,4 +24,4 @@ const routes: Routes = [
   imports: [CommonModule, RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

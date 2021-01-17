@@ -12,8 +12,9 @@ import { HeaderComponent } from './header/header.component';
 import { AuthComponent } from './auth/auth.component';
 import { AuthService } from './shared/services/auth.service';
 import { UserComponent } from './user/user.component';
-import { MenuModule } from './menu-container/menu.module';
 import { ProfileComponent } from './profile/profile.component';
+import { MenuContainerComponent } from './menu-container/menu-container.component';
+import { MenuDetailsComponent } from './menu-container/menu-details/menu-details.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,8 @@ import { ProfileComponent } from './profile/profile.component';
     AuthComponent,
     UserComponent,
     ProfileComponent,
+    MenuContainerComponent,
+    MenuDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +32,6 @@ import { ProfileComponent } from './profile/profile.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    MenuModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

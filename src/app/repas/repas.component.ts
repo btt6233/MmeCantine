@@ -28,7 +28,7 @@ export class RepasComponent implements OnInit {
       console.log(this.meals);
     });
 
-    this.user = this.userService.getUser();
+    this.user = this.userService.getCurrentUser();
   }
 
   public addCommande(meal) {

@@ -1,58 +1,57 @@
-
-.container{
-    padding: 0.5em 2em;
+.container {
+  padding: 0.5em 2em;
 }
 
-.nav{
-    display: flex;
-    justify-content: space-between;
+.nav {
+  display: flex;
+  justify-content: space-between;
 }
 
-.logo{
-    max-width: 10em;
+.logo {
+  max-width: 10em;
 }
 
-.menu-list{
-    display: flex;
-    list-style: none;    
+.menu-list {
+  display: flex;
+  list-style: none;
 }
 
-li{
-    margin: 1em;
+li {
+  margin: 1em;
 }
 
-button:focus{
-    outline: 0px;
+button:focus,
+img:focus {
+  outline: 0px;
 }
 
-.btn-simple{
-    font-family: Epilogue-ExtraBold;
-    color: black;
-    cursor: pointer;
-    border-radius: 3em;
-    border: none;
-    padding: 1em 2em;
-    background-color: #ffffff;
-    box-shadow: 0px 0px 52px -12px rgba(0,0,0,0.25) ;
+.btn-simple {
+  font-family: Epilogue-ExtraBold;
+  color: black;
+  cursor: pointer;
+  border-radius: 3em;
+  border: none;
+  padding: 1em 2em;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 52px -12px rgba(0, 0, 0, 0.25);
 }
 
-.btn-green{
-    font-family: Epilogue-ExtraBold;
-    color: white;
-    cursor: pointer;
-    border-radius: 3em;
-    border: none;
-    padding: 1em 2em;
-    background-color: #45BF87;
+.btn-green {
+  font-family: Epilogue-ExtraBold;
+  color: white;
+  cursor: pointer;
+  border-radius: 3em;
+  border: none;
+  padding: 1em 2em;
+  background-color: #45bf87;
 }
 
-.btn-pink{
-    font-family: Epilogue-ExtraBold;
-    color: white;
-    cursor: pointer;
-    border-radius: 3em;
-    border: none;
-    padding: 1em 2em;
-    background-color: #FAD0D0;
+.btn-pink {
+  font-family: Epilogue-ExtraBold;
+  color: white;
+  cursor: pointer;
+  border-radius: 3em;
+  border: none;
+  padding: 1em 2em;
+  background-color: #fad0d0;
 }
-

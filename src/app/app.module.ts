@@ -16,6 +16,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { MenuContainerComponent } from './menu-container/menu-container.component';
 import { MenuDetailsComponent } from './menu-container/menu-details/menu-details.component';
 import { RepasComponent } from './repas/repas.component';
+import { CommandesComponent } from './commandes/commandes.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { RepasComponent } from './repas/repas.component';
     MenuContainerComponent,
     MenuDetailsComponent,
     RepasComponent,
+    CommandesComponent,
   ],
   imports: [
     BrowserModule,

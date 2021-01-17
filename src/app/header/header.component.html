@@ -13,6 +13,11 @@
         <button *ngIf="!isConnected()" class="btn-green">Inscription</button>
       </li>
       <li>
+        <button *ngIf="isConnected()" class="btn-simple" routerLink="/commandes">
+          Mes commandes
+        </button>
+      </li>
+      <li>
         <button *ngIf="isConnected()" class="btn-green" routerLink="/profile">
           Mon compte
         </button>

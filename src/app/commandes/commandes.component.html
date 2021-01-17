@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>Mes Commandes</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Date :</th>
+        <th>Quantité :</th>
+        <th>Description :</th>
+        <th>Prix :</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let commande of commandes">
+        <td>{{ commande.creationDate }}</td>
+        <td *ngFor="let quantity of commande.quantity">
+          {{ quantity.quantity }}
+        </td>
+        <td *ngFor="let quantity of commande.quantity">
+          {{ quantity.meal.label }}
+        </td>
+        <td *ngFor="let quantity of commande.quantity">
+          {{ quantity.meal.priceDF }} €
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<style>
+  td,
+  th,
+  tr {
+    border: solid 1px;
+  }
+</style>

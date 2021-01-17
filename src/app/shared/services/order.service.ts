@@ -17,7 +17,7 @@ export class OrderService {
   ) { }
 
   public findAllOrderByUserId() {
-    let user = this.userService.getUser().id;
+    let user = this.userService.getCurrentUser();
 
     return this.http.get(API + '/order/findallforuser/' + user.id);
   }

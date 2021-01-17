@@ -6,26 +6,15 @@ import { JwtHelperService } from '@auth0/angular-jwt';
 const API: string = "http://localhost:8080/lunchtime";
 const HELPER = new JwtHelperService();
 
-interface User {
-  id: number;
-  name: string;
-  firstname: string;
-}
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-  // user;
-  token: string | null = null;
 
-  constructor(private http: HttpClient, private auth: AuthService) {
-    this.getUser();
-
+  constructor() {
   }
 
-  public getUser() {
+  public getCurrentUser() {
     if (localStorage.getItem('Authorization')) {
       let token = localStorage.getItem('Authorization');
       const decodedToken = HELPER.decodeToken(token);

@@ -40,28 +40,6 @@ export class UserComponent implements OnInit {
     }
   }
 
-  getUserById(id: number): any {
-    // if(localStorage.getItem("Authorization")) {
-    //   this.token = localStorage.getItem("Authorization");
-    //   let options = {
-    //     headers : { "Authorization" : this.token } 
-    //   };
-    //   this.http.get(API + 'user/find/' + id).subscribe((user: User) => {
-    //     return user;
-    //   });
-    
-    
-    
-    // }
-    
-    // return this.http.get<User>(API + 'user/find/' + id);
-    
-
-    // return this.http.get(API + 'user/find/' + id);
-    // console.log(this.users);
-    
-    
-  }
 
 }
 

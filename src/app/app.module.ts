@@ -13,6 +13,7 @@ import { AuthComponent } from './auth/auth.component';
 import { AuthService } from './shared/services/auth.service';
 import { UserComponent } from './user/user.component';
 import { MenuModule } from './menu-container/menu.module';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { MenuModule } from './menu-container/menu.module';
     HeaderComponent,
     AuthComponent,
     UserComponent,
+    UserDetailComponent,
   ],
   imports: [
     BrowserModule,

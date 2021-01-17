@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 
-const API : string = "http://localhost:8080/lunchtime";
+const API: string = "http://localhost:8080/lunchtime";
 const HELPER = new JwtHelperService();
 
 interface User {
@@ -20,7 +20,21 @@ export class UserService {
   // user;
   token: string | null = null;
 
-  constructor(private http: HttpClient, private auth: AuthService) { }
+  constructor(private http: HttpClient, private auth: AuthService) {
+    this.getUser();
+
+  }
+
+  public getUser() {
+    if (localStorage.getItem('Authorization')) {
+      let token = localStorage.getItem('Authorization');
+      const decodedToken = HELPER.decodeToken(token);
+
+      let user = decodedToken.user
+
+      return user
+    }
+  }
 
 
   // getCurrentUser(): void {

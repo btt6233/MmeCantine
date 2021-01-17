@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../shared/models/user';
-import { JwtHelperService } from '@auth0/angular-jwt';
-
-const HELPER = new JwtHelperService();
+import { UserService } from '../shared/services/user.service';
 
 @Component({
   selector: 'app-profile',
@@ -12,16 +10,11 @@ const HELPER = new JwtHelperService();
 export class ProfileComponent implements OnInit {
   public currentUser: User;
 
-  constructor() {}
+  constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.getUser();
+    this.currentUser = this.userService.getUser()
   }
 
-  public getUser() {
-    let token = localStorage.getItem('Authorization');
-    const decodedToken = HELPER.decodeToken(token);
-
-    this.currentUser = decodedToken.user
-  }
+ 
 }

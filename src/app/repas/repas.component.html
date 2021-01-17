@@ -1,0 +1,36 @@
+<div class="container">
+    <h1>A la carte aujourd'hui</h1>
+  
+    <div class="menu-container">
+      <div *ngFor="let meal of meals">
+        <div class="menu-item">
+          <div class="indicateur">
+            <span>Reste</span>
+          </div>
+          <div class="header">
+            <h3>{{ meal.label }}</h3>
+            <span>{{ meal.priceDF }} €</span>
+          </div>
+          <div class="row">
+            <ul *ngIf="meal.ingredients">
+              <li *ngFor="let ingredient of meal.ingredients">
+                {{ ingredient.label }}
+              </li>
+            </ul>
+            <img
+              src="../../assets/images/meal/{{ meal.label }}.png"
+              alt=""
+              srcset=""
+            />
+          </div>
+  
+          <div class="btn">
+            <button class="btn-green" (click)="addCommande(meal)">
+              Commander
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

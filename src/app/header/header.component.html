@@ -1,31 +1,53 @@
 <div class="container">
-    <nav class="nav">
-      <img
-        class="logo"
-        src="../../assets/images/madame-cantine.svg"
-        alt="Logo Madame Cantine"
-        routerLink="/"
-      />
-      <ul class="menu-list">
-          <li><button class="btn-simple" routerLink="/">Menus</button></li>
-          <li><button *ngIf="!isConnected()" class="btn-green">Inscription</button></li>
-          <li><button *ngIf="isConnected()" class="btn-green" routerLink="/profile">Mon compte</button></li>
-          <li><button *ngIf="!isConnected()" class="btn-pink" routerLink="/connexion">Connexion</button></li>
-          <li><button *ngIf="isConnected()" (click)="logout()" class="btn-pink" routerLink="/">Déconnexion</button></li>
-          <li *ngIf="isConnected()">
-            <span>{{ currentUser.firstname }}</span><br>
-            <span>{{ currentUser.name }}</span>
-          </li>
-      </ul>
-    </nav>
-    <div *ngIf="isConnected()">
-      <div *ngIf="currentUser">
-        <button *ngIf="currentUser.isLunchLady" routerLink="/user-list" class="btn-green">User List</button>
-      </div>
+  <nav class="nav">
+    <img
+      class="logo"
+      src="../../assets/images/madame-cantine.svg"
+      alt="Logo Madame Cantine"
+      routerLink="/"
+    />
+    <ul class="menu-list">
+      <li><button class="btn-simple" routerLink="/">Menus</button></li>
+      <li><button class="btn-simple" routerLink="repas">A la carte</button></li>
+      <li>
+        <button *ngIf="!isConnected()" class="btn-green">Inscription</button>
+      </li>
+      <li>
+        <button *ngIf="isConnected()" class="btn-green" routerLink="/profile">
+          Mon compte
+        </button>
+      </li>
+      <li>
+        <button *ngIf="!isConnected()" class="btn-pink" routerLink="/connexion">
+          Connexion
+        </button>
+      </li>
+      <li>
+        <button
+          *ngIf="isConnected()"
+          (click)="logout()"
+          class="btn-pink"
+          routerLink="/"
+        >
+          Déconnexion
+        </button>
+      </li>
+      <li *ngIf="isConnected()">
+        <span>{{ currentUser.firstname }}</span
+        ><br />
+        <span>{{ currentUser.name }}</span>
+      </li>
+    </ul>
+  </nav>
+  <div *ngIf="isConnected()">
+    <div *ngIf="currentUser">
+      <button
+        *ngIf="currentUser.isLunchLady"
+        routerLink="/user-list"
+        class="btn-green"
+      >
+        User List
+      </button>
     </div>
-
-    
   </div>
-
-
-  
+</div>

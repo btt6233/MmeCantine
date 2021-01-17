@@ -1,13 +1,12 @@
-import { Ingredient } from './ingredient.model';
 import { Meal } from './meal.model';
 
 export interface Menu {
   id: number;
+  description?: number;
   label: string;
   status: number;
   imageId: number;
-  price: number;
+  priceDF: number;
   availableForWeeks: number[];
   meals: Meal[];
-  ingredients: Ingredient[];
 }

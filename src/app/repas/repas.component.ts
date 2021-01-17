@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Meal } from '../shared/models/meal.model';
+import { Order } from '../shared/models/order.model';
+import { Quantity } from '../shared/models/quantity.model';
+import { User } from '../shared/models/user';
+import { MealService } from '../shared/services/meal.service';
+import { OrderService } from '../shared/services/order.service';
 import { UserService } from '../shared/services/user.service';
 
 @Component({

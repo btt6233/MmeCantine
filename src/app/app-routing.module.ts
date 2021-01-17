@@ -8,9 +8,11 @@ import { AuthGuard } from './guards/auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { MenuContainerComponent } from './menu-container/menu-container.component';
 import { MenuDetailsComponent } from './menu-container/menu-details/menu-details.component';
+import { RepasComponent } from './repas/repas.component';
 
 const routes: Routes = [
   { path: '', component: MenuContainerComponent },
+  { path: 'repas', component: RepasComponent },
   { path: 'connexion', component: AuthComponent },
   { path: 'user-list', canActivate: [AuthGuard], component: UserComponent },
   { path: 'profile', component: ProfileComponent },

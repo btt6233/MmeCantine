@@ -83,3 +83,15 @@ button:focus {
   display: flex;
   justify-content: space-around;
 }
+
+.alert{
+  background-color: red;
+  padding: 1em;
+  border-radius: 1em;
+}
+
+.success{
+  background-color: #45bf87;;
+  padding: 1em;
+  border-radius: 1em;
+}

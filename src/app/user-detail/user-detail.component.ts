@@ -36,7 +36,7 @@ export class UserDetailComponent implements OnInit {
         this.getToken();
         // this.getById(this.user.id);
         // console.log(this.token);
-        if(this.token != null){
+
           this.activatedRoute.params.subscribe(params => {
 
             let id = params['id'];
@@ -44,19 +44,7 @@ export class UserDetailComponent implements OnInit {
               localStorage.getItem("Authorization");
               this.user = user;
             });
-         });
-
-         
-          // console.log(this.activatedRoute);
-          
-          
-          // this.activatedRoute.params.subscribe((params: Params) => {
-          //   this.userService.findById(params['id']).subscribe((res: any) => {
-          //     this.user = res;
-          //   });
-          // });
-
-        }
+         });        
       }
   
 
@@ -64,11 +52,5 @@ export class UserDetailComponent implements OnInit {
     return this.token = localStorage.getItem("Authorization");
   }
 
-  // getById(id: number): any{
-  //   this.activatedRoute.params.subscribe((params: Params) => {
-  //     this.userService.findById(params.id).subscribe((user: User) => {
-  //       this.user = this.user;
-  //     });
-  //   });
-  // }
+
 }

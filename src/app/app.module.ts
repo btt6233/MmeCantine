@@ -1,9 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 
@@ -18,6 +17,7 @@ import { MenuDetailsComponent } from './menu-container/menu-details/menu-details
 import { RepasComponent } from './repas/repas.component';
 import { CommandesComponent } from './commandes/commandes.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { AuthInterceptor } from "./shared/interceptor/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -39,7 +39,7 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
     HttpClientModule,
     FormsModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }], 
   bootstrap: [AppComponent]
 })
 export class AppModule { }

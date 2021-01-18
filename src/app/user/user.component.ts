@@ -21,9 +21,7 @@ export class UserComponent implements OnInit {
   constructor(private http: HttpClient, private auth: AuthService, private oneuser: UserService) { }
 
   ngOnInit(): void {
-    // console.log(this.token);
-    this.getUserList()
-    
+    this.getUserList() 
   }
 
   getUserList(){
@@ -35,18 +33,9 @@ export class UserComponent implements OnInit {
       this.http.get(API + '/user/findall', options)
       .subscribe((res : any) => {
         this.users = res;
-        
-        
       });
     }
   }
-
-  // getById(id: number){
-  //   this.oneuser
-  //   .findById(id)
-  //   .subscribe((user: User) => this.user = user)
-  // }
-
 
 }
 

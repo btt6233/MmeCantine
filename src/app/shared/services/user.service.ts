@@ -25,7 +25,8 @@ export class UserService {
     this.http = new HttpClient(handler);
    }
 
-  findById(id: number): Observable<User> {
-    return this.http.get<User>(API + '/user/find/' + id);
+  findById(id: number): any {
+
+    return this.http.get(API + '/user/find/' + id);
   }
 }

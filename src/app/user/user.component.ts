@@ -15,9 +15,10 @@ const API : string = "http://localhost:8080/lunchtime";
 export class UserComponent implements OnInit {
   token: string | null = null;
   users: any[] = [];
+  public user: User | null = null;
 
 
-  constructor(private http: HttpClient, private auth: AuthService) { }
+  constructor(private http: HttpClient, private auth: AuthService, private oneuser: UserService) { }
 
   ngOnInit(): void {
     // console.log(this.token);
@@ -39,6 +40,12 @@ export class UserComponent implements OnInit {
       });
     }
   }
+
+  // getById(id: number){
+  //   this.oneuser
+  //   .findById(id)
+  //   .subscribe((user: User) => this.user = user)
+  // }
 
 
 }

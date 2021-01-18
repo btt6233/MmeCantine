@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Route } from '@angular/router';
 import { Observable, CompletionObserver } from 'rxjs';
 import { User } from '../shared/models/user';
 import { UserService } from '../shared/services/user.service';
@@ -36,27 +36,39 @@ export class UserDetailComponent implements OnInit {
         this.getToken();
         // this.getById(this.user.id);
         // console.log(this.token);
-        // if(this.token){
-          console.log(this.user.id);
+        if(this.token != null){
+          this.activatedRoute.params.subscribe(params => {
+
+            let id = params['id'];
+            this.http.get('http://localhost:8080/lunchtime/user/find/' + id).subscribe((user: User) => {
+              localStorage.getItem("Authorization");
+              this.user = user;
+            });
+         });
+
+         
+          // console.log(this.activatedRoute);
           
           
-        //   this.activatedRoute.params.subscribe((params: Params) => {
-        //     this.userService.findById(params.id).subscribe((res: any) => {
-        //       this.user = res;
-        //     });
-        //   });
-        // }
-  }
+          // this.activatedRoute.params.subscribe((params: Params) => {
+          //   this.userService.findById(params['id']).subscribe((res: any) => {
+          //     this.user = res;
+          //   });
+          // });
+
+        }
+      }
+  
 
   getToken(){
     return this.token = localStorage.getItem("Authorization");
   }
 
-  getById(id: number){
-    this.activatedRoute.params.subscribe((params: Params) => {
-      this.userService.findById(params.id).subscribe((user: User) => {
-        this.user = user;
-      });
-    });
-  }
+  // getById(id: number): any{
+  //   this.activatedRoute.params.subscribe((params: Params) => {
+  //     this.userService.findById(params.id).subscribe((user: User) => {
+  //       this.user = this.user;
+  //     });
+  //   });
+  // }
 }

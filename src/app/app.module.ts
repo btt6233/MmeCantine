@@ -18,6 +18,7 @@ import { RepasComponent } from './repas/repas.component';
 import { CommandesComponent } from './commandes/commandes.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { AuthInterceptor } from "./shared/interceptor/auth.interceptor";
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AuthInterceptor } from "./shared/interceptor/auth.interceptor";
     MenuDetailsComponent,
     RepasComponent,
     CommandesComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

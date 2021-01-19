@@ -17,10 +17,21 @@
           {{ quantity.quantity }}
         </td>
         <td *ngFor="let quantity of commande.quantity">
-          {{ quantity.meal.label }}
+          <div *ngIf="quantity.meal">
+            {{ quantity.meal.label }}
+          </div>
+          <div *ngIf="quantity.menu">
+            {{ quantity.menu.label }}
+          </div>
+          
         </td>
         <td *ngFor="let quantity of commande.quantity">
-          {{ quantity.meal.priceDF }} €
+          <div *ngIf="quantity.meal">
+            {{ quantity.meal.priceDF }} €
+          </div>
+          <div *ngIf="quantity.menu">
+            {{ quantity.menu.priceDF }} €
+          </div>
         </td>
       </tr>
     </tbody>
@@ -32,5 +43,9 @@
   th,
   tr {
     border: solid 1px;
+  }
+
+  td{
+    padding: 0.5em;
   }
 </style>

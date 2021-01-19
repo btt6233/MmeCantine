@@ -5,6 +5,6 @@ export class Quantity {
   constructor(
     public quantity: number,
     public mealId: Meal[],
-    public menuId?: Menu[]
+    public menuId: Menu[]
   ) {}
 }

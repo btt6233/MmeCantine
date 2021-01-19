@@ -36,7 +36,7 @@ export class RepasComponent implements OnInit {
     if (window.confirm('Passer la commande ?')) {
       if (this.user.wallet >= meal.priceDF) {
 
-        let order = new Order(this.user.id, 1, [new Quantity(1, meal.id)]);
+        let order = new Order(this.user.id, 1, [new Quantity(1, meal.id,null)]);
         this.orderService.addOrder(order).subscribe(
           (order: Order) => {
             this.message = "Commande effectuer"

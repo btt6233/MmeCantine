@@ -1,25 +1,39 @@
-<div *ngIf="menu">
-  <div class="main-container">
-    <div class="container">
-      <div class="header">
-        <h1>{{ menu.label }}</h1>
-        <span>{{ menu.priceDF }} €</span>
-      </div>
-      <hr />
-      <div class="presentation">
-        <div class="left">
-          <h4 *ngIf="menu.meals">{{ menu.meals[0].label }}</h4>
-          <ul *ngIf="menu.meals">
-            <li *ngFor="let ingredient of menu.meals[0].ingredients">
+<div class="container" *ngIf="menu">
+  <div class="header">
+    <h1>{{ menu.label }}</h1>
+    <div>
+      <span
+        *ngIf="message"
+        [ngClass]="{
+          success: messageType === true,
+          alert: messageType === false
+        }"
+        >{{ message }}</span>
+    </div>
+  </div>
+
+  <div class="menu-container">
+    <div *ngFor="let meal of menu.meals">
+      <div class="menu-item">
+        <div class="header">
+          <h3>{{ meal.label }}</h3>
+        </div>
+        <div class="row">
+          <ul *ngIf="meal.ingredients">
+            <li *ngFor="let ingredient of meal.ingredients">
               {{ ingredient.label }}
             </li>
           </ul>
-          <button class="btn-green" routerLink="/">Commander</button>
-        </div>
-        <div>
-          <img [src]="imgSrc" alt="imgSrc" />
+          <img
+            src="../../assets/images/meal/{{ meal.label }}.png"
+            alt=""
+            srcset=""
+          />
         </div>
       </div>
     </div>
+  </div>
+  <div class="btn">
+    <button class="btn-green" (click)="addCommande(menu)">Commander</button>
   </div>
 </div>

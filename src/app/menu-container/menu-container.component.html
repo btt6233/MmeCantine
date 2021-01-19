@@ -1,5 +1,16 @@
 <div class="container">
-  <h1>Au menu aujourd'hui !</h1>
+  <div class="header">
+    <h1>Au menu aujourd'hui !</h1>
+    <div>
+      <span
+        *ngIf="message"
+        [ngClass]="{
+          success: messageType === true,
+          alert: messageType === false
+        }"
+        >{{ message }}</span>
+    </div>
+  </div>
 
   <div class="menu-container">
     <div *ngFor="let menu of menus">
@@ -11,12 +22,14 @@
           <h3>{{ menu.label }}</h3>
           <span>{{ menu.priceDF }} €</span>
         </div>
-        <h2 *ngIf="menu.meals">{{ menu.meals[0].label }}</h2>
+        <ul *ngIf="menu.meals">
+          <li *ngFor="let meal of menu.meals">{{meal.label}}</li>
+        </ul>
         <div class="btn">
           <button class="btn-pink" routerLink="/menu/{{ menu.id }}">
             Voir le detail
           </button>
-          <button class="btn-green">Commander</button>
+          <button class="btn-green" (click)="addCommande(menu)">Commander</button>
         </div>
       </div>
     </div>

@@ -78,3 +78,21 @@ span {
 button:focus {
   outline: 0px;
 }
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  }
+
+  .alert{
+    background-color: red;
+    padding: 1em;
+    border-radius: 1em;
+    }
+    
+    .success{
+    background-color: #45bf87;;
+    padding: 1em;
+    border-radius: 1em;
+    }

@@ -3,7 +3,7 @@ import { AuthService } from '../shared/services/auth.service';
 import { UserService } from '../shared/services/user.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { User } from '../shared/models/user';
-import { HeaderComponent } from '../header/header.component';
+
 
 const HELPER = new JwtHelperService();
 
@@ -17,10 +17,10 @@ export class FooterComponent implements OnInit {
   public currentUser: User | null;
   public isLunchLady: boolean;
 
-  constructor( private authService: AuthService, private userService: UserService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    this.isConnected()
+    this.isConnected();
     console.log(this.currentUser);
     
   }
@@ -30,6 +30,7 @@ export class FooterComponent implements OnInit {
       let decodeToken = HELPER.decodeToken(localStorage.getItem("Authorization"));
       this.currentUser = decodeToken.user;
       return this.currentUser;
+      
     } else {
       return false;
     }

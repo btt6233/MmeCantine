@@ -6,3 +6,8 @@ footer {
     display: flex;
     justify-content: flex-end;
 }
+
+.btn-green {
+    margin-bottom: 1em;
+    margin-right: 2em;
+}

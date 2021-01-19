@@ -27,4 +27,24 @@ h3 {
   font-family: Epilogue-Bold;
   /* font-size: 2em; */
 }
+
+.btn-green {
+  font-family: Epilogue-ExtraBold;
+  color: white;
+  cursor: pointer;
+  border-radius: 3em;
+  border: none;
+  padding: 1em 2em;
+  background-color: #45bf87;
+}
+
+.btn-pink {
+  font-family: Epilogue-ExtraBold;
+  color: white;
+  cursor: pointer;
+  border-radius: 3em;
+  border: none;
+  padding: 1em 2em;
+  background-color: #fad0d0;
+}
   

@@ -17,7 +17,7 @@ export class HeaderComponent implements OnInit {
   public currentUser: User | null;
   public isLunchLady: boolean;
 
-  constructor( private authService: AuthService, private userService: UserService) { }
+  constructor( private authService: AuthService) { }
 
   ngOnInit(): void {
     this.isConnected();    

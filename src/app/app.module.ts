@@ -18,6 +18,7 @@ import { MenuDetailsComponent } from './menu-container/menu-details/menu-details
 import { RepasComponent } from './repas/repas.component';
 import { CommandesComponent } from './commandes/commandes.component';
 import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
+import { CommandesListComponent } from './lunchLady/commandes-list/commandes-list.component';
 
 
 @NgModule({
@@ -31,6 +32,7 @@ import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
     MenuDetailsComponent,
     RepasComponent,
     CommandesComponent,
+    CommandesListComponent,
   ],
   imports: [
     BrowserModule,

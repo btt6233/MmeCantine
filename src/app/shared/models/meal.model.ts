@@ -1,8 +1,9 @@
 import { Ingredient } from './ingredient.model';
+import { Image } from "./image.model";
 
 export interface Meal {
   id: string;
-  description?:string;
+  description:string;
   label: string;
   statut: number;
   imageId: number;
@@ -10,3 +11,4 @@ export interface Meal {
   availableForWeeks: number[];
   ingredients: Ingredient[];
 }
+

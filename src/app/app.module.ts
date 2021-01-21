@@ -19,6 +19,7 @@ import { CommandesComponent } from './commandes/commandes.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
 import { AuthInterceptor } from "./shared/interceptor/auth.interceptor";
 import { FooterComponent } from './footer/footer.component';
+import { MealAddComponent } from './meal-add/meal-add.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { FooterComponent } from './footer/footer.component';
     RepasComponent,
     CommandesComponent,
     UserDetailComponent,
-    FooterComponent
+    FooterComponent,
+    MealAddComponent
   ],
   imports: [
     BrowserModule,

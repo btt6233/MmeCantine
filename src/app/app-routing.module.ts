@@ -11,17 +11,20 @@ import { MenuDetailsComponent } from './menu-container/menu-details/menu-details
 import { RepasComponent } from './repas/repas.component';
 import { CommandesComponent } from './commandes/commandes.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
+import { MealAddComponent } from './meal-add/meal-add.component';
 
 const routes: Routes = [
   { path: '', component: MenuContainerComponent },
   { path: 'repas', component: RepasComponent },
   { path: 'connexion', component: AuthComponent },
   { path: 'user-list', canActivate: [AuthGuard], component: UserComponent },
+  { path: 'creer-plat', canActivate: [AuthGuard], component: MealAddComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'commandes', component: CommandesComponent },
   { path: 'menu/:id', component: MenuDetailsComponent },
   { path: 'user/:id', component: UserDetailComponent },
   { path: '**', component: MenuContainerComponent },
+  
 
 ];
 

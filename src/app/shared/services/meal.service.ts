@@ -17,5 +17,10 @@ export class MealService {
   findAllAvailableForToday(): Observable<Meal[]> {
     return this.http.get<Meal[]>(API + '/meal/findallavailablefortoday');
   }
+
+  addMeal(meal: Meal): Observable<Meal[]>{
+    
+    return this.http.put<Meal[]>(API + '/meal/add', meal);
+  }
 }
 

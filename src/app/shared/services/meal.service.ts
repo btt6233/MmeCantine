@@ -11,7 +11,7 @@ const API: string = 'http://localhost:8080/lunchtime';
 export class MealService {
 
   constructor(private http: HttpClient, private handler: HttpBackend) {
-    this.http = new HttpClient(handler);
+    // this.http = new HttpClient(handler);
   }
 
   findAllAvailableForToday(): Observable<Meal[]> {
@@ -19,7 +19,6 @@ export class MealService {
   }
 
   addMeal(meal: Meal): Observable<Meal[]>{
-    
     return this.http.put<Meal[]>(API + '/meal/add', meal);
   }
 }

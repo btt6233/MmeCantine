@@ -1,7 +1,7 @@
-export interface Ingredient {
-  id: number;
-  description?: string;
-  label: string;
-  status: number;
-  imageId: number;
+export class Ingredient {
+  constructor(
+    public label: string,
+    public description?: string,
+    public imageId?: number,
+){}
 }

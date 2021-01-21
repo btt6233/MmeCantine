@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MealService } from '../shared/services/meal.service';
 import { Meal } from "../shared/models/meal.model";
-import { stringify } from '@angular/compiler/src/util';
+import { Ingredient } from '../shared/models/ingredient.model';
+
 
 @Component({
   selector: 'app-meal-add',
@@ -9,22 +10,23 @@ import { stringify } from '@angular/compiler/src/util';
   styleUrls: ['./meal-add.component.css']
 })
 export class MealAddComponent implements OnInit {
+
   public dish: Meal;
 
   constructor( private mealService: MealService ) { }
 
   ngOnInit(): void {
+    this.createMeal();
   }
 
   createMeal(){
-    let meal = new Meal(this.dish.description,
-      this.dish.label,
-      this.dish.image,
-      this.dish.priceDF,
-      this.dish.availableForWeeks,
-      this.dish.ingredients);
-    this.mealService.addMeal(meal).subscribe((meal: Meal) => {
-      this.dish = meal;
+    let meal = new Meal("une description",
+      "un label",
+      // this.dish.image,
+      13,
+      [new Ingredient("tomates", "descrrrrriiririptino", null)])
+    this.mealService.addMeal(meal).subscribe((res: any) => {
+      console.log(res);
       
     });
   }

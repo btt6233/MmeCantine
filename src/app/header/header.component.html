@@ -44,15 +44,4 @@
       </li>
     </ul>
   </nav>
-  <div *ngIf="isConnected()">
-    <div *ngIf="currentUser">
-      <button
-        *ngIf="currentUser.isLunchLady"
-        routerLink="/user-list"
-        class="btn-green"
-      >
-        User List
-      </button>
-    </div>
-  </div>
 </div>

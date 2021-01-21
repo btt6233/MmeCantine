@@ -1,0 +1,13 @@
+footer {
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: fixed;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-green {
+    margin-bottom: 1em;
+    margin-right: 2em;
+}

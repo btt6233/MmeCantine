@@ -10,6 +10,7 @@ import { MenuContainerComponent } from './menu-container/menu-container.componen
 import { MenuDetailsComponent } from './menu-container/menu-details/menu-details.component';
 import { RepasComponent } from './repas/repas.component';
 import { CommandesComponent } from './commandes/commandes.component';
+import { UserDetailComponent } from './user-detail/user-detail.component';
 
 const routes: Routes = [
   { path: '', component: MenuContainerComponent },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'profile', component: ProfileComponent },
   { path: 'commandes', component: CommandesComponent },
   { path: 'menu/:id', component: MenuDetailsComponent },
+  { path: 'user/:id', component: UserDetailComponent },
   { path: '**', component: MenuContainerComponent },
 
 ];

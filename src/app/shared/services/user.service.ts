@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpBackend } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
+import { User } from '../models/user';
 
 const API: string = "http://localhost:8080/lunchtime";
 const HELPER = new JwtHelperService();
@@ -11,8 +13,9 @@ const HELPER = new JwtHelperService();
 })
 export class UserService {
 
-  constructor() {
-  }
+  constructor(private http: HttpClient,handler: HttpBackend, private auth: AuthService) {
+    this.http = new HttpClient(handler);
+   }
 
   public getCurrentUser() {
     if (localStorage.getItem('Authorization')) {
@@ -25,19 +28,12 @@ export class UserService {
     }
   }
 
+  findById(id: number): Observable<User> {
+    return this.http.get<User>(API + '/user/find/' + id);
+  }
+  // public findById(id: number): Observable<User> {
 
-  // getCurrentUser(): void {
-  //   const TOKEN = this.auth.token;
-  //   const DECODE_TOKEN = HELPER.decodeToken(this.token);
-
-  //   this.http
-  //   .get(API + '/user/find/' + DECODE_TOKEN.user.id)
-  //   .subscribe((user: User) => {
-  //     this.user.next(user);
-  //   });
-  // return this.user;
+  //     return this.http.get<User>(API + '/user/find/' + id);
+    
   // }
-
-
-
 }

@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { RouterModule } from '@angular/router';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -17,8 +16,9 @@ import { MenuContainerComponent } from './menu-container/menu-container.componen
 import { MenuDetailsComponent } from './menu-container/menu-details/menu-details.component';
 import { RepasComponent } from './repas/repas.component';
 import { CommandesComponent } from './commandes/commandes.component';
-import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
-
+import { UserDetailComponent } from './user-detail/user-detail.component';
+import { AuthInterceptor } from "./shared/interceptor/auth.interceptor";
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +31,8 @@ import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
     MenuDetailsComponent,
     RepasComponent,
     CommandesComponent,
+    UserDetailComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

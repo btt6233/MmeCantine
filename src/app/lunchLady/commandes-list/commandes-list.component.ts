@@ -17,7 +17,7 @@ export class CommandesListComponent implements OnInit {
   ngOnInit(): void {
     this.orderService.findAllOrderDateBetween().subscribe((orders: Order[]) => {
       this.commandes = orders
-      console.log(this.commandes);
+      // console.log(this.commandes);
       this.countCommandes()
     })
   }
@@ -25,7 +25,7 @@ export class CommandesListComponent implements OnInit {
   public countCommandes() {
     let meals = null
     let menus = null
-    let commandes = null
+    let commandes = []
 
     this.commandes.forEach(commande => {
 
@@ -35,16 +35,22 @@ export class CommandesListComponent implements OnInit {
 
         if (quantity.menu) {
           menus++
+          if (!commandes.find(x => x.id == quantity.menu.id)) {
+            commandes.push(quantity.menu)
+          }
         }
         else{
           meals++
+          if (!commandes.find(x => x.id == quantity.meal.id)) {
+            commandes.push(quantity.meal)
+          }
         }
 
       });
 
     });
 
-    console.log(`il y a ${meals} plats et ${menus} menus`);
+    console.log(commandes);
 
   }
 

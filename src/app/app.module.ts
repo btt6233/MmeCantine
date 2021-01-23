@@ -19,6 +19,7 @@ import { RepasComponent } from './repas/repas.component';
 import { CommandesComponent } from './commandes/commandes.component';
 import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
 import { CommandesListComponent } from './lunchLady/commandes-list/commandes-list.component';
+import { CommandesDetailsComponent } from './lunchLady/commandes-details/commandes-details.component';
 
 
 @NgModule({
@@ -33,6 +34,7 @@ import { CommandesListComponent } from './lunchLady/commandes-list/commandes-lis
     RepasComponent,
     CommandesComponent,
     CommandesListComponent,
+    CommandesDetailsComponent,
   ],
   imports: [
     BrowserModule,

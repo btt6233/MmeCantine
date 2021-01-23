@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Order } from 'src/app/shared/models/order.model';
 import { OrderService } from 'src/app/shared/services/order.service';
 
@@ -9,49 +10,60 @@ import { OrderService } from 'src/app/shared/services/order.service';
 })
 export class CommandesListComponent implements OnInit {
   public commandes = null;
+  public allCommandes = null
   // public dateDebut = "2020-01-12"
   // public dateFin = "2020-01-12"
 
-  constructor(private orderService: OrderService) { }
+  constructor(private orderService: OrderService,private router :Router) { }
 
   ngOnInit(): void {
     this.orderService.findAllOrderDateBetween().subscribe((orders: Order[]) => {
-      this.commandes = orders
-      // console.log(this.commandes);
-      this.countCommandes()
+      this.allCommandes = orders
+      this.commandes = this.countCommandes()
+      console.log(this.commandes);
     })
   }
 
   public countCommandes() {
-    let meals = null
-    let menus = null
     let commandes = []
 
-    this.commandes.forEach(commande => {
+    this.allCommandes.forEach(commande => {
 
       let quantities = commande.quantity
 
       quantities.forEach(quantity => {
 
         if (quantity.menu) {
-          menus++
-          if (!commandes.find(x => x.id == quantity.menu.id)) {
-            commandes.push(quantity.menu)
+          if (!commandes.find(x => x.preparation.id == quantity.menu.id)) {
+            commandes.push({nombre:1,preparation:quantity.menu,users:[{idCommande:commande.id,user:commande.user}]})
+          }
+          else{
+            let index = commandes.findIndex(x => x.preparation.id == quantity.menu.id)
+            commandes[index].nombre++
+            commandes[index].users.push({idCommande:commande.id,user:commande.user})
           }
         }
         else{
-          meals++
-          if (!commandes.find(x => x.id == quantity.meal.id)) {
-            commandes.push(quantity.meal)
+          if (!commandes.find(x => x.preparation.id == quantity.meal.id)) {
+            commandes.push({nombre:1,preparation:quantity.meal,users:[{idCommande:commande.id,user:commande.user}]})
+          }
+          else{
+            let index = commandes.findIndex(x => x.preparation.id == quantity.meal.id)
+            commandes[index].nombre++
+            commandes[index].users.push({idCommande:commande.id,user:commande.user})
           }
         }
 
       });
 
     });
+    
+    return commandes;
 
-    console.log(commandes);
+  }
 
+  public seeDetails(commande){
+    this.router.navigate(['commandes-detail'], { state: {data: commande} });
   }
 
 }

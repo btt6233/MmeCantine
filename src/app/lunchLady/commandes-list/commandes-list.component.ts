@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Order } from 'src/app/shared/models/order.model';
 import { OrderService } from 'src/app/shared/services/order.service';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-commandes-list',
@@ -13,11 +14,12 @@ export class CommandesListComponent implements OnInit {
   public allCommandes = null
   // public dateDebut = "2020-01-12"
   // public dateFin = "2020-01-12"
+  public dateDuJour = moment().format("YYYY-MM-DD")
 
   constructor(private orderService: OrderService,private router :Router) { }
 
   ngOnInit(): void {
-    this.orderService.findAllOrderDateBetween().subscribe((orders: Order[]) => {
+    this.orderService.findAllOrderDateBetween(this.dateDuJour,this.dateDuJour).subscribe((orders: Order[]) => {
       this.allCommandes = orders
       this.commandes = this.countCommandes()
       console.log(this.commandes);

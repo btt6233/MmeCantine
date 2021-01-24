@@ -31,11 +31,11 @@ export class OrderService {
    * Retourn la liste des commandes avec le status 0 (created) entre deux date
    * Necessite le role LunchLady
    */
-  public findAllOrderDateBetween(): Observable<Order[]> {
+  public findAllOrderDateBetween(beginDate,endDate): Observable<Order[]> {
     let parametres = new HttpParams();
     parametres = parametres.append('status', '0');
-    parametres = parametres.append('beginDate', "2021-01-19");
-    parametres = parametres.append('endDate', "2021-01-19");
+    parametres = parametres.append('beginDate', beginDate);
+    parametres = parametres.append('endDate', endDate);
 
     return this.http.get<Order[]>(API + "/order/findallbetweendateinstatus", {params:parametres})
   }

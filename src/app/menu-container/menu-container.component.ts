@@ -27,6 +27,9 @@ export class MenuContainerComponent implements OnInit {
       this.menus = menus;
     });
     this.user = this.userService.getCurrentUser();
+    this.userService.getCurrentUserFromBack(this.user.id).subscribe((user: User) => {
+      this.user = user
+    })
   }
 
   public addCommande(menu) {

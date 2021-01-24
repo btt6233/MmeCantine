@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { Observable } from 'rxjs';
+import { User } from '../models/user';
 
 const API: string = "http://localhost:8080/lunchtime";
 const HELPER = new JwtHelperService();
@@ -11,9 +13,12 @@ const HELPER = new JwtHelperService();
 })
 export class UserService {
 
-  constructor() {
+  constructor(private http:HttpClient) {
   }
 
+  /**
+   * retourn le user recuperé par le token
+   */
   public getCurrentUser() {
     if (localStorage.getItem('Authorization')) {
       let token = localStorage.getItem('Authorization');
@@ -23,6 +28,13 @@ export class UserService {
 
       return user
     }
+  }
+
+  /**
+   * Return le user recuperer via une requete vers l'Api
+   */
+  public getCurrentUserFromBack(userId):Observable<User>{
+    return this.http.get<User>(API + '/user/find/' + userId)
   }
 
 

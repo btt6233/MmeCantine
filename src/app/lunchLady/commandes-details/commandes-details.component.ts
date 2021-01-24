@@ -9,19 +9,33 @@ import { OrderService } from 'src/app/shared/services/order.service';
 })
 export class CommandesDetailsComponent implements OnInit {
   public commande = null
+  public message: string = null
+  public messageType: boolean = null
 
   constructor(private router: Router, private orderService: OrderService) { }
 
   ngOnInit(): void {
     this.commande = history.state.data
-    console.log(this.commande);
   }
 
   public validerCommande(idCommande) {
     this.orderService.validerUneCommande(idCommande).subscribe((res: any) => {
-      this.router.navigate(['commandes-list'])
+      this.message = "Commande Valider"
+      this.messageType = true
+
+      setTimeout(() => {
+        this.message = null
+        this.messageType = null
+        this.router.navigate(['commandes-list'])
+      }, 3000);
     }, (err) => {
-      console.log(err);
+      this.message = err.error.exceptionMessage
+      this.messageType = false
+
+      setTimeout(() => {
+        this.message = null
+        this.messageType = null
+      }, 3000);
     })
   }
 

@@ -1,17 +1,32 @@
 <div class="container">
-    <div *ngIf="commande">
-        <div class="commande-container">
-            <h3>{{commande.preparation.label}}</h3>
-            <ul *ngFor="let user of commande.users">
-                <li>
-                    {{user.user.name}}
-                    {{user.user.firstname}}
-                    <span>
-                        <button class="btn-pink" (click)="validerCommande(user.idCommande)">Valider la commande</button>
-                        <button class="btn-green">Modifier la commande</button>
-                    </span>
-                </li>
-            </ul>
-        </div>
+  <div class="header">
+    <h1>Details Commande</h1>
+    <div>
+      <span
+        *ngIf="message"
+        [ngClass]="{
+          success: messageType === true,
+          alert: messageType === false
+        }"
+        >{{ message }}</span
+      >
     </div>
+  </div>
+  <div *ngIf="commande">
+    <div class="commande-container">
+      <h3>{{ commande.preparation.label }}</h3>
+      <ul *ngFor="let user of commande.users">
+        <li>
+          {{ user.user.name }}
+          {{ user.user.firstname }}
+          <span>
+            <button class="btn-pink" (click)="validerCommande(user.idCommande)">
+              Valider la commande
+            </button>
+            <button class="btn-green">Modifier la commande</button>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

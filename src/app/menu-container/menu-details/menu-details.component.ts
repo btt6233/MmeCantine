@@ -21,7 +21,7 @@ export class MenuDetailsComponent implements OnInit {
     this.activatedRoute.params.subscribe((params: Params) => {
       this.menuService.findMenuById(params.id).subscribe((menu: Menu) => {
         this.menu = menu;
-        if ('../assets/images/meal/' + menu.meals[0].imageId) {
+        if ('../assets/images/meal/' + menu.meals[0]) {
           this.imgSrc = '../assets/images/meal/' + menu.meals[0].label + '.png';
         }
       });

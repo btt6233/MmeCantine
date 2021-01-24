@@ -13,9 +13,17 @@
         <button *ngIf="!isConnected()" class="btn-green">Inscription</button>
       </li>
       <li>
-        <button *ngIf="isConnected()" class="btn-simple" routerLink="/commandes">
-          Mes commandes
-        </button>
+        <div *ngIf="isConnected()">
+          <div *ngIf="currentUser">
+            <button *ngIf="currentUser.isLunchLady" class="btn-simple" routerLink="/commandes-list">
+              Les commandes
+            </button>
+            <button *ngIf="!currentUser.isLunchLady" class="btn-simple" routerLink="/commandes">
+              Mes commandes
+            </button>
+          </div>
+        </div>
+        
       </li>
       <li>
         <button *ngIf="isConnected()" class="btn-green" routerLink="/profile">

@@ -17,6 +17,9 @@ export class UserService {
     this.http = new HttpClient(handler);
    }
 
+  /**
+   * retourn le user recuperé par le token
+   */
   public getCurrentUser() {
     if (localStorage.getItem('Authorization')) {
       let token = localStorage.getItem('Authorization');
@@ -32,6 +35,13 @@ export class UserService {
     return this.http.get<User>(API + '/user/find/' + id);
   }
   // public findById(id: number): Observable<User> {
+  /**
+   * Return le user recuperer via une requete vers l'Api
+   */
+  public getCurrentUserFromBack(userId):Observable<User>{
+    return this.http.get<User>(API + '/user/find/' + userId)
+  }
+
 
   //     return this.http.get<User>(API + '/user/find/' + id);
     

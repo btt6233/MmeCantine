@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="header">
+    <h1>Les commandes</h1>
+  </div>
+
+  <div class="date">
+    <span>Rechercher par date :</span>
+    <input type="date" name="dateDebut" id="dateDebut" [(ngModel)]="dateDebut" />
+    <input type="date" name="dateDebut" id="dateFin" [(ngModel)]="dateFin" />
+    <button class="btn-simple" (click)=rechercherCommandes(dateDebut,dateFin)>Rechercher</button>
+  </div>
+
+  <div class="menu-container">
+    <span *ngIf="!commandes">Aucune commandes</span>
+    <div *ngFor="let commande of commandes">
+      <div class="menu-item">
+        <div class="indicateur">
+          <span>{{ commande.nombre }} Pers</span>
+        </div>
+        <div class="header">
+          <h3>{{ commande.preparation.label }}</h3>
+        </div>
+        <div class="row">
+          <ul *ngIf="commande.preparation.meals">
+            <li *ngFor="let meal of commande.preparation.meals">
+              {{ meal.label }}
+            </li>
+          </ul>
+        </div>
+        <div class="btn">
+          <button class="btn-pink" (click)="seeDetails(commande)">
+            Voir le detail
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

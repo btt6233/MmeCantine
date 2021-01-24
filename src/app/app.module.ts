@@ -17,8 +17,11 @@ import { MenuDetailsComponent } from './menu-container/menu-details/menu-details
 import { RepasComponent } from './repas/repas.component';
 import { CommandesComponent } from './commandes/commandes.component';
 import { UserDetailComponent } from './user-detail/user-detail.component';
-import { AuthInterceptor } from "./shared/interceptor/auth.interceptor";
 import { FooterComponent } from './footer/footer.component';
+import { AuthInterceptor } from './shared/interceptor/auth.interceptor';
+import { CommandesListComponent } from './lunchLady/commandes-list/commandes-list.component';
+import { CommandesDetailsComponent } from './lunchLady/commandes-details/commandes-details.component';
+
 
 @NgModule({
   declarations: [
@@ -32,7 +35,9 @@ import { FooterComponent } from './footer/footer.component';
     RepasComponent,
     CommandesComponent,
     UserDetailComponent,
-    FooterComponent
+    FooterComponent,
+    CommandesListComponent,
+    CommandesDetailsComponent,
   ],
   imports: [
     BrowserModule,

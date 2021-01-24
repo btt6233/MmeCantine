@@ -8,6 +8,7 @@
         <th>Quantité :</th>
         <th>Description :</th>
         <th>Prix :</th>
+        <th>Status :</th>
       </tr>
     </thead>
     <tbody>
@@ -32,6 +33,10 @@
           <div *ngIf="quantity.menu">
             {{ quantity.menu.priceDF }} €
           </div>
+        </td>
+        <td>
+          <!-- {{commande.status}} -->
+          {{status[commande.status]}}
         </td>
       </tr>
     </tbody>

@@ -39,4 +39,11 @@ export class OrderService {
 
     return this.http.get<Order[]>(API + "/order/findallbetweendateinstatus", {params:parametres})
   }
+
+  /**
+   * Necessite le role LunchLady
+   */
+  public validerUneCommande(orderId,constraintId = -1){
+    return this.http.patch(API + "/order/deliverandpay/" + orderId + "/" + constraintId, {} )
+  }
 }

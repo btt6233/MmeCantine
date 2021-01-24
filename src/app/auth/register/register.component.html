@@ -1,0 +1,65 @@
+<div class="container">
+  <h1>Inscription</h1>
+</div>
+
+<div>
+  <input type="radio" name="civi" value="Mme" /> Madame
+
+  <input type="radio" name="civi" value="Mr" /> Monsieur
+</div>
+
+<div class="form-container">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="row">
+      <div class="col">
+        <label>Email :</label>
+        <input
+          type="email"
+          placeholder="johndoe@m-cantine.fr"
+          formControlName="email"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label>Mot de passe :</label>
+        <input type="password" formControlName="password" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label>Confirmation :</label>
+        <input type="password" formControlName="password" />
+      </div>
+    </div>
+
+    <div>
+      Vous êtes ici<br />
+      <select name="profil">
+         <option value="parti">De passage dans l'école (1 semaine)</option>
+         <option value="profe" selected="selected">Pour 3 mois</option>
+         <option value="insti">A l'année</option>
+      </select>
+    </div>
+
+   <form action="user.php" method="post" enctype="multipart/form-data">
+    <div>
+            Choisissez votre photo de profil :<br />
+            <input type="file" name="avatar" /><br />
+            <input type="submit" value="Envoyer le fichier" />
+    </div>
+   </form>
+
+    <div *ngIf="error">
+      {{ error }}
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button class="btn-green">Se connecter</button>
+      </div>
+    </div>
+  </form>
+</div>

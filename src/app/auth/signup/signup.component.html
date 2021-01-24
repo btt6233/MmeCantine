@@ -1,0 +1,108 @@
+<div class="container">
+  <h1>Inscription</h1>
+</div>
+
+<div class="form-container">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="row">
+      <div class="col">
+        <label for="name">Nom :</label>
+        <input type="text" id="name" placeholder="Nom" formControlName="name" />
+        <div *ngIf="form.controls['name'].invalid && (form.controls['name'].dirty || form.controls['name'].touched)">
+          <div *ngIf="form.controls['name'].errors.required">
+            Le nom est requis.
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <label for="firstname">Prenom :</label>
+        <input type="text" placeholder="Prenom" id="firstname" formControlName="firstname"/>
+        <div *ngIf="form.controls['firstname'].invalid && (form.controls['firstname'].dirty || form.controls['firstname'].touched)">
+          <div *ngIf="form.controls['firstname'].errors.required">
+            Le prénom est requis.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="email">Email :</label>
+        <input type="email" placeholder="email" id="email" formControlName="email"/>
+        <div *ngIf="form.controls['email'].invalid && (form.controls['email'].dirty || form.controls['email'].touched)">
+          <div *ngIf="form.controls['email'].errors.required">L'adresse mail est requise.</div>
+          <div *ngIf="form.controls['email'].errors.email">Email must be a valid email address</div>
+        </div>
+      </div>
+      <div class="col">
+        <label for="phone">Telephone :</label>
+        <input type="tel" placeholder="tel" id="phone" formControlName="phone" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label >Mot de passe :</label>
+        <input type="password" placeholder="password" formControlName="password" [ngClass]="{ 'is-invalid': form.controls['password'].errors }"/>
+        <div *ngIf="form.controls['password'].errors" class="invalid-feedback">
+          <div *ngIf="form.controls['password'].errors.required">Password is required</div>
+          <div *ngIf="form.controls['password'].errors.minlength">Password must be at least 4 characters</div>
+        </div>
+      </div>
+      <div class="col">
+        <label>Confirmer mot de passe :</label>
+        <input type="password" placeholder="password" />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="address">Adresse</label>
+        <input type="text" placeholder="address" id="address" formControlName="address" />
+        <div *ngIf="form.controls['address'].invalid && (form.controls['address'].dirty || form.controls['address'].touched)">
+          <div *ngIf="form.controls['address'].errors.required">
+            L'adresse est requise.
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <label for="cp">Code postal :</label>
+        <input type="text" placeholder="code postal" formControlName="postalCode" id="cp"/>
+        <div *ngIf="form.controls['postalCode'].invalid && (form.controls['postalCode'].dirty || form.controls['postalCode'].touched)">
+          <div *ngIf="form.controls['postalCode'].errors.required">
+            Le code postal est requis.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label for="ville">Ville</label>
+        <input type="text" placeholder="Ville" id="ville" formControlName="town" />
+        <div *ngIf="form.controls['town'].invalid && (form.controls['town'].dirty || form.controls['town'].touched)">
+          <div *ngIf="form.controls['town'].errors.required">
+            La ville est requise.
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <label for="sexe">Sexe</label>
+        <select formControlName="sex" id="sexe" >
+          <option value="'2'">Autre</option>
+          <option value="'0'">Monsieur</option>
+          <option value="'1'">Madame</option>
+        </select>
+      </div>
+    </div>
+
+    <div *ngIf="error">{{ error }}</div>
+
+    <div class="row">
+      <div class="col">
+        <button class="btn-green">S'inscrire</button>
+      </div>
+    </div>
+  </form>
+</div>

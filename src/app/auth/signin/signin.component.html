@@ -1,0 +1,35 @@
+<div class="container">
+  <h1>Connexion</h1>
+</div>
+
+<div class="form-container">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div class="row">
+      <div class="col">
+        <label>email :</label>
+        <input
+          type="email"
+          placeholder="johndoe@m-cantine.fr"
+          formControlName="email"
+        />
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <label>Mot de passe :</label>
+        <input type="password" formControlName="password" />
+      </div>
+    </div>
+
+    <div *ngIf="error">
+      {{ error }}
+    </div>
+
+    <div class="row">
+      <div class="col">
+        <button class="btn-green">Se connecter</button>
+      </div>
+    </div>
+  </form>
+</div>

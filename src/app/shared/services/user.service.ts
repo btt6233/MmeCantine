@@ -14,7 +14,7 @@ const HELPER = new JwtHelperService();
 export class UserService {
 
   constructor(private http: HttpClient,handler: HttpBackend, private auth: AuthService) {
-    this.http = new HttpClient(handler);
+    // this.http = new HttpClient(handler);
    }
 
   /**

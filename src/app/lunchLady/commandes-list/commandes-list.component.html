@@ -1,26 +1,17 @@
-<!-- <div class="container">
-  <h1>Les commandes</h1>
-
-  <div class="date">
-    <input type="date" name="dateDebut" id="dateDebut" [(ngModel)]="dateDebut" />
-    <input type="date" name="dateDebut" id="dateFin" [(ngModel)]="dateFin" />
-  </div>
-
-  <div *ngFor="let commande of commandes">
-    <div class="commande">
-      <div class="row">
-        {{ commande.user.name }}
-      </div>
-    </div>
-  </div>
-</div> -->
-
 <div class="container">
   <div class="header">
     <h1>Les commandes</h1>
   </div>
 
+  <div class="date">
+    <span>Rechercher par date :</span>
+    <input type="date" name="dateDebut" id="dateDebut" [(ngModel)]="dateDebut" />
+    <input type="date" name="dateDebut" id="dateFin" [(ngModel)]="dateFin" />
+    <button class="btn-simple" (click)=rechercherCommandes(dateDebut,dateFin)>Rechercher</button>
+  </div>
+
   <div class="menu-container">
+    <span *ngIf="!commandes">Aucune commandes</span>
     <div *ngFor="let commande of commandes">
       <div class="menu-item">
         <div class="indicateur">

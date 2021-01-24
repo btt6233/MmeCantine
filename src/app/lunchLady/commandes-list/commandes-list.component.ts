@@ -12,18 +12,13 @@ import * as moment from 'moment';
 export class CommandesListComponent implements OnInit {
   public commandes = null;
   public allCommandes = null
-  // public dateDebut = "2020-01-12"
-  // public dateFin = "2020-01-12"
-  public dateDuJour = moment().format("YYYY-MM-DD")
+  public dateDebut = moment().format("YYYY-MM-DD")
+  public dateFin = moment().format("YYYY-MM-DD")
 
   constructor(private orderService: OrderService,private router :Router) { }
 
   ngOnInit(): void {
-    this.orderService.findAllOrderDateBetween(this.dateDuJour,this.dateDuJour).subscribe((orders: Order[]) => {
-      this.allCommandes = orders
-      this.commandes = this.countCommandes()
-      console.log(this.commandes);
-    })
+    this.rechercherCommandes(this.dateDebut,this.dateFin)
   }
 
   public countCommandes() {
@@ -60,12 +55,28 @@ export class CommandesListComponent implements OnInit {
 
     });
     
-    return commandes;
+    if (commandes.length > 0) {
+      return commandes;      
+    }
+    else{
+      return null
+    }
+    
+    
 
   }
 
   public seeDetails(commande){
     this.router.navigate(['commandes-detail'], { state: {data: commande} });
+  }
+
+  public rechercherCommandes(dateDebut,dateFin){
+    this.orderService.findAllOrderDateBetween(dateDebut,dateFin).subscribe((orders: Order[]) => {
+      this.allCommandes = orders
+      this.commandes = this.countCommandes()
+      console.log(this.commandes);
+    })
+
   }
 
 }
